@@ -30,8 +30,6 @@ export const PersonalizationModal = () => {
     instanceQuery.options
   )
 
-  console.log("Inst : ", instance)
-
   const tabs = [
       {
         label: 'Wallpaper',
