@@ -55,9 +55,7 @@ export const WidgetsWrapper = () => {
   const client = useClient()
   const { t } = useI18n()
 
-  const [installedWidgets, setInstalledWidgets] = React.useState(
-    isMobile ? [2] : [1, 2]
-  )
+  const [installedWidgets, setInstalledWidgets] = React.useState([2])
   const [customWidgetsOpen, setCustomWidgetsOpen] = React.useState(false)
 
   const uninstallWidget = widgetIndex => {
