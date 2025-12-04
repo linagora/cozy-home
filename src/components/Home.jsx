@@ -17,6 +17,7 @@ import GroupedServices from '@/components/GroupedServices'
 import { Announcements } from '@/components/Announcements/Announcements'
 
 import styles from './styles.styl'
+import WidgetsWrapper from './Widgets/WidgetsWrapper'
 
 const Home = ({ wrapper }) => {
   const { pathname } = useLocation()
@@ -30,6 +31,7 @@ const Home = ({ wrapper }) => {
         {flag('cozy.searchbar.enabled') && !isMobile && (
           <AssistantDesktopWrapper />
         )}
+        {flag('home.widgets.enabled') && <WidgetsWrapper />}
         <div
           role="main"
           className={cx('u-flex u-flex-column u-ph-1', {
