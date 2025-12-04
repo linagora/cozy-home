@@ -8,8 +8,8 @@ const defaultFetchPolicy = CozyClient.fetchPolicies.olderThan(
 export const buildDriveRecentsQuery = () => ({
   definition: () =>
     Q('io.cozy.files')
-      .where({ type: "file", trashed: false })
-      .sortBy([{'cozyMetadata.updatedAt': 'desc'}])
+      .where({ type: 'file', trashed: false })
+      .sortBy([{ 'cozyMetadata.updatedAt': 'desc' }])
       .limitBy(20),
   options: {
     as: 'io.cozy.files/recents',
@@ -20,7 +20,7 @@ export const buildDriveRecentsQuery = () => ({
 export const buildDriveFavoritesQuery = () => ({
   definition: () =>
     Q('io.cozy.files')
-      .where({ type: "file", trashed: false, "cozyMetadata.favorite": true })
+      .where({ type: 'file', trashed: false, 'cozyMetadata.favorite': true })
       .sortBy([{ 'cozyMetadata.updatedAt': 'desc' }])
       .limitBy(20),
   options: {
@@ -44,8 +44,8 @@ export const buildDriveSharedQuery = ({ ids }) => ({
 export const buildDriveFoldersQuery = () => ({
   definition: () =>
     Q('io.cozy.files')
-      .where({ type: "directory" })
-      .sortBy([{'cozyMetadata.updatedAt': 'desc'}])
+      .where({ type: 'directory' })
+      .sortBy([{ 'cozyMetadata.updatedAt': 'desc' }])
       .limitBy(20),
   options: {
     as: 'io.cozy.files/directories',
@@ -56,8 +56,8 @@ export const buildDriveFoldersQuery = () => ({
 export const buildDriveTrashedQuery = () => ({
   definition: () =>
     Q('io.cozy.files')
-      .where({ type: "file", trashed: true })
-      .sortBy([{'cozyMetadata.updatedAt': 'desc'}])
+      .where({ type: 'file', trashed: true })
+      .sortBy([{ 'cozyMetadata.updatedAt': 'desc' }])
       .limitBy(20),
   options: {
     as: 'io.cozy.files/trashed',

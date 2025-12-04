@@ -5,7 +5,6 @@ import ListItemText from 'cozy-ui/transpiled/react/ListItemText'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import Typography from 'cozy-ui/transpiled/react/Typography'
 import Button from 'cozy-ui/transpiled/react/Buttons'
-import { useCozyTheme } from 'cozy-ui/transpiled/react/providers/CozyTheme'
 import { CircularProgress } from 'cozy-ui/transpiled/react/Progress'
 import Menu from 'cozy-ui/transpiled/react/Menu'
 import MenuItem from 'cozy-ui/transpiled/react/MenuItem'
@@ -27,7 +26,6 @@ export const WidgetTabs = ({
   onTabChange,
   index
 }) => {
-  const { type } = useCozyTheme()
   const { t } = useI18n()
   const client = useClient()
   const [selectedTab, setSelectedTab] = useState(defaultTab)

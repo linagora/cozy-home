@@ -3,7 +3,7 @@ import Typography from 'cozy-ui/transpiled/react/Typography'
 import WidgetTabs, {
   LoadingWidgetView,
   UnimplementedWidgetView
-} from '../../Atoms/WidgetTabs'
+} from '@/components/Widgets/Atoms/WidgetTabs'
 import { useAppLinkWithStoreFallback, useClient, useQuery } from 'cozy-client'
 import {
   buildDriveFavoritesQuery,
@@ -33,7 +33,7 @@ export const DriveWidgetView = ({ app, layoutControls, index }) => {
   return (
     <>
       <SharedDocuments>
-        {({ sharedDocuments, allLoaded }) => (
+        {({ sharedDocuments }) => (
           <WidgetTabs
             app={app}
             index={index}
