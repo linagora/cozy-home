@@ -607,5 +607,24 @@
   },
   "wallpaper": {
     "import": "Import"
+  },
+  "Widget": {
+    "up": "Up",
+    "down": "Down",
+    "openApp": "Open app",
+    "remove": "Remove",
+
+    "Papillon": {
+      "NoCourses": "No courses",
+      "NoHomeworks": "No homeworks",
+      "NoGrades": "No grades"
+    },
+
+    "Drive": {
+      "NoRecentFiles": "No recent file",
+      "NoRecentFolders": "No recent folder",
+      "NoSharedFiles": "No shared files",
+      "NoFavoriteFiles": "No favorite files"
+    }
   }
 }

@@ -607,5 +607,24 @@
   },
   "wallpaper": {
     "import": "Importer"
+  },
+  "Widget": {
+    "up": "Monter",
+    "down": "Descendre",
+    "openApp": "Ouvrir l'app",
+    "remove": "Supprimer",
+
+    "Papillon": {
+      "NoCourses": "Aucun cours",
+      "NoHomeworks": "Aucun devoir",
+      "NoGrades": "Aucune note"
+    },
+
+    "Drive": {
+      "NoRecentFiles": "Aucun fichier récent",
+      "NoRecentFolders": "Aucun dossier récent",
+      "NoSharedFiles": "Aucun fichier partagé",
+      "NoFavoriteFiles": "Aucun fichier favori"
+    }
   }
 }
