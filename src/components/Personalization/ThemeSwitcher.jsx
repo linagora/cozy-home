@@ -46,7 +46,7 @@ export const ThemeSwitcher = () => {
   if (!colorSchemeValue) return null
 
   return (
-    <div className="u-w-4">
+    <div>
       <Tabs
         narrowed
         segmented
