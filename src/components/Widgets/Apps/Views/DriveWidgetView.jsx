@@ -9,7 +9,8 @@ import {
   buildDriveFavoritesQuery,
   buildDriveFoldersQuery,
   buildDriveRecentsQuery,
-  buildDriveSharedQuery
+  buildDriveSharedQuery,
+  SETTINGS_DIR_PATH
 } from '../Queries/DriveQueries'
 import List from 'cozy-ui/transpiled/react/List'
 import ListItemByDoc from 'cozy-ui-plus/src/ListItem/ListItemByDoc'
@@ -95,6 +96,10 @@ export const DriveWidgetFileTab = ({ setOpenedFile }) => {
     driveQuery.options
   )
 
+  const filteredFiles = files?.filter(
+    file => !file.path || !file.path.startsWith(SETTINGS_DIR_PATH)
+  )
+
   if (filesFetchStatus === 'loading') {
     return <LoadingWidgetView />
   }
@@ -105,14 +110,14 @@ export const DriveWidgetFileTab = ({ setOpenedFile }) => {
 
   return (
     <List dense style={{ padding: 0 }}>
-      {files &&
-        files.length > 0 &&
-        files.map((file, i) => (
+      {filteredFiles &&
+        filteredFiles.length > 0 &&
+        filteredFiles.map((file, i) => (
           <WidgetDriveFileItem
             key={file._id}
             file={file}
             client={client}
-            open={() => setOpenedFile({ files: files, index: i })}
+            open={() => setOpenedFile({ files: filteredFiles, index: i })}
           />
         ))}
     </List>

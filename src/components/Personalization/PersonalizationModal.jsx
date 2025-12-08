@@ -5,7 +5,6 @@ import Wallpaper from './Wallpaper'
 
 import { useClient } from 'cozy-client'
 import { ThemeSwitcher } from './ThemeSwitcher'
-import Button from 'cozy-ui/transpiled/react/Button'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import cx from 'classnames'
 import Widget from './Widget'
@@ -35,7 +34,7 @@ export const PersonalizationModal = ({
   const tabs = [
     {
       label: 'Wallpaper',
-      icon: <PaletteIcon />,
+      icon: PaletteIcon,
       onClick: () => {
         setTabSelected(0)
       },
@@ -46,7 +45,7 @@ export const PersonalizationModal = ({
       ? [
           {
             label: 'Widgets',
-            icon: <MosaicIcon />,
+            icon: MosaicIcon,
             onClick: () => {
               setTabSelected(1)
             },
@@ -61,20 +60,25 @@ export const PersonalizationModal = ({
     <div className="u-w-100 u-h-100 u-flex u-flex-column u-flex-items-center u-flex-items-end-t u-flex-items-end-t u-flex-items-end-s u-flex-justify-start u-pos-relative">
       <div className="u-w-100 u-flex u-flex-justify-end">
         <div className={headerClassname}>
-          {tabs.map((tab, index) => (
-            <Button
-              key={tab.label}
-              className={`u-bdrs-circle ${styles['personalizationTabButton']} ${
-                tabSelected === index
-                  ? styles['personalizationTabButton--selected']
-                  : ''
-              }`}
-              label={<Icon icon={tab.icon} size={14} />}
-              size="small"
-              variant={'ghost'}
-              onClick={tab.onClick}
-            />
-          ))}
+          <div className={styles['personalize-modal-tabs']}>
+            {tabs.map((tab, index) => (
+              <IconButton
+                key={tab.label}
+                className={`u-bdrs-circle ${
+                  styles['personalizationTabButton']
+                } ${
+                  tabSelected === index
+                    ? styles['personalizationTabButton--selected']
+                    : ''
+                }`}
+                size="small"
+                variant={'ghost'}
+                onClick={tab.onClick}
+              >
+                <Icon icon={tab.icon} size={14} />
+              </IconButton>
+            ))}
+          </div>
 
           <div className={headerSwitcherClassname}>
             <ThemeSwitcher isAnimationComplete={isAnimationComplete} />
@@ -101,7 +105,7 @@ export const PersonalizationModal = ({
         }}
       >
         {tabs
-          .filter((tab, index) => tab.component)
+          .filter(tab => tab.component)
           .map((tab, index) => (
             <Transition
               in={tabSelected === index}

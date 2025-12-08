@@ -12,24 +12,27 @@ import { AvailableWidgets } from '../Widgets/WidgetsWrapper'
 
 import { appsConn } from '@/queries'
 import { useQuery } from 'cozy-client'
-import { useWallpaperContext } from '@/hooks/useWallpaperContext'
+import { useWidgetContext } from '@/hooks/useWidgetContext'
 
 const Widget = ({ client }) => {
   const { data: apps } = useQuery(appsConn.query, appsConn)
+
   const {
-    data: { widgets },
-    installWidget,
-    uninstallWidget
-  } = useWallpaperContext()
+    installedWidgets,
+    installWidget: contextInstallWidget,
+    uninstallWidget: contextUninstallWidget
+  } = useWidgetContext()
 
   const getAppBySlug = slug => {
     return apps?.find(app => app.slug === slug)
   }
 
+  const AllWidgets = Object.values(AvailableWidgets)
+
   return (
     <div>
       <List style={{ padding: 0 }}>
-        {AvailableWidgets.map((widget, index) => (
+        {AllWidgets.map((widget, index) => (
           <ListItem dense button key={index} onClick={() => {}}>
             <ListItemIcon>
               <div
@@ -52,7 +55,16 @@ const Widget = ({ client }) => {
               </Typography>
             </ListItemText>
             <ListItemSecondaryAction className="u-mr-1">
-              <Switch checked={false} />
+              <Switch
+                checked={installedWidgets.includes(widget.name)}
+                onClick={() => {
+                  if (installedWidgets.includes(widget.name)) {
+                    contextUninstallWidget(widget.name)
+                  } else {
+                    contextInstallWidget(widget.name)
+                  }
+                }}
+              />
             </ListItemSecondaryAction>
           </ListItem>
         ))}

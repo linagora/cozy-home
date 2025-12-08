@@ -27,6 +27,7 @@ import schema from '../schema'
 import { ConditionalWrapper } from './ConditionalWrapper'
 import { WallPaperProvider } from '@/hooks/useWallpaperContext'
 import { SectionsProvider } from './Sections/SectionsContext'
+import { WidgetProvider } from '@/hooks/useWidgetContext'
 const dictRequire = lang => require(`@/locales/${lang}.json`)
 
 export const AppContext = createContext()
@@ -126,26 +127,28 @@ const AppWrapper = ({ children }) => {
           <SharingProvider doctype="io.cozy.files" documentType="Files">
             <DataProxyProvider>
               <WallPaperProvider>
-                <CozyTheme>
-                  <ThemeProvider>
-                    <AlertProvider>
-                      <ReduxProvider store={store}>
-                        <ConditionalWrapper
-                          condition={persistor}
-                          wrapper={children => (
-                            <PersistGate loading={null} persistor={persistor}>
+                <WidgetProvider>
+                  <CozyTheme>
+                    <ThemeProvider>
+                      <AlertProvider>
+                        <ReduxProvider store={store}>
+                          <ConditionalWrapper
+                            condition={persistor}
+                            wrapper={children => (
+                              <PersistGate loading={null} persistor={persistor}>
+                                {children}
+                              </PersistGate>
+                            )}
+                          >
+                            <Inner lang={lang} context={context}>
                               {children}
-                            </PersistGate>
-                          )}
-                        >
-                          <Inner lang={lang} context={context}>
-                            {children}
-                          </Inner>
-                        </ConditionalWrapper>
-                      </ReduxProvider>
-                    </AlertProvider>
-                  </ThemeProvider>
-                </CozyTheme>
+                            </Inner>
+                          </ConditionalWrapper>
+                        </ReduxProvider>
+                      </AlertProvider>
+                    </ThemeProvider>
+                  </CozyTheme>
+                </WidgetProvider>
               </WallPaperProvider>
             </DataProxyProvider>
           </SharingProvider>

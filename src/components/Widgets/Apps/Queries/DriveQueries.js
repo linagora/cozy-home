@@ -5,10 +5,15 @@ const defaultFetchPolicy = CozyClient.fetchPolicies.olderThan(
   DEFAULT_CACHE_TIMEOUT_QUERIES
 )
 
+export const SETTINGS_DIR_PATH = '/Settings'
+
 export const buildDriveRecentsQuery = () => ({
   definition: () =>
     Q('io.cozy.files')
-      .where({ type: 'file', trashed: false })
+      .where({
+        type: 'file',
+        trashed: false
+      })
       .sortBy([{ 'cozyMetadata.updatedAt': 'desc' }])
       .limitBy(20),
   options: {
