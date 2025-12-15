@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { withClient } from 'cozy-client'
 import Intents from 'cozy-interapp'
 
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
+import { translate } from 'twake-i18n'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 

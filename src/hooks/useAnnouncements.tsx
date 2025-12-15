@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 import flag from 'cozy-flags'
 import { useClient } from 'cozy-client'
 

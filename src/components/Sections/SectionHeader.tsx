@@ -8,7 +8,7 @@ import Divider from 'cozy-ui/transpiled/react/MuiCozyTheme/Divider'
 import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 
 import { actions } from '@/components/Sections/SectionActions'
 import { computeGroupMode } from '@/components/Sections/utils'

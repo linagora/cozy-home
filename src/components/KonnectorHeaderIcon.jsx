@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { translate } from 'cozy-ui/transpiled/react/providers/I18n'
+import { translate } from 'twake-i18n'
 import PropTypes from 'prop-types'
 import AppIcon from 'cozy-ui-plus/dist/AppIcon'
 

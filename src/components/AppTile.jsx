@@ -5,7 +5,7 @@ import { models } from 'cozy-client'
 import AppLinker from 'cozy-ui-plus/dist/AppLinker'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 
 const { applications } = models
 

@@ -3,7 +3,7 @@ import { queryConnect, Q, models, fetchPolicies } from 'cozy-client'
 import get from 'lodash/get'
 
 import AppLinker from 'cozy-ui-plus/dist/AppLinker'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 import GearIcon from 'cozy-ui/transpiled/react/Icons/Gear'
 
 import CornerButton from './CornerButton'

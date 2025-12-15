@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 import flag from 'cozy-flags'
 import { getErrorLocaleBound, KonnectorJobError } from 'cozy-harvest-lib'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 import { generateWebLink, useClient } from 'cozy-client'
 
 import {

@@ -6,7 +6,7 @@ import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import CrossIcon from 'cozy-ui/transpiled/react/Icons/Cross'
 import { useCozyTheme } from 'cozy-ui/transpiled/react/providers/CozyTheme'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 
 import styles from './Wallpaper.styl'
 import {

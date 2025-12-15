@@ -4,7 +4,7 @@ import { useClient, generateWebLink } from 'cozy-client'
 
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 import Link from 'cozy-ui/transpiled/react/Link'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 
 export const EntrypointLink = ({ entrypoint }) => {
   const client = useClient()

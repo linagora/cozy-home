@@ -10,7 +10,7 @@ import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 
 import { useBreakpoints } from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import { makeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 import { useClient } from 'cozy-client'
 
 import styles from './shortcut.styl'

@@ -4,7 +4,7 @@ import uniqBy from 'lodash/uniqBy'
 import { useQuery, useFetchHomeShortcuts, models } from 'cozy-client'
 
 import flag from 'cozy-flags'
-import { useI18n } from 'cozy-ui/transpiled/react/providers/I18n'
+import { useI18n } from 'twake-i18n'
 import cx from 'classnames'
 
 import AppTile from '@/components/AppTile'
