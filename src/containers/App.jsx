@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Navigate, Route } from 'react-router-dom'
+import { Navigate, Route, useLocation } from 'react-router-dom'
 import { BarComponent } from 'cozy-bar'
+import cx from 'classnames'
 
 import flag from 'cozy-flags'
 import minilog from 'cozy-minilog'
@@ -40,11 +41,13 @@ import { useFetchInitialData } from '@/hooks/useFetchInitialData'
 import SectionDialog from '@/components/Sections/SectionDialog'
 import { SentryRoutes } from '@/lib/sentry'
 import '../flags'
+import styles from '../styles/app.styl'
 
 window.flag = window.flag || flag
 window.minilog = minilog
 
 const App = () => {
+  const { pathname } = useLocation()
   const { isMobile } = useBreakpoints()
   const [contentWrapper, setContentWrapper] = useState(undefined)
 
@@ -104,25 +107,44 @@ const App = () => {
     setDidInit(true)
   }
 
+  const isAssistantRoute = pathname.startsWith('/connected/assistant/')
+
   return (
     // u-bg-white avoids mix-blend-mode from home-custom-background to be linked to the background color of the body. Must not be responsive to the theme.
-    <Layout monoColumn className="u-bg-white">
+    <Layout
+      monoColumn
+      className={`${
+        isAssistantRoute ? 'u-bg-primaryBackgroundLight' : 'u-bg-white'
+      }`}
+    >
       <BarComponent
-        searchOptions={{ enabled: false }}
+        searchOptions={{ enabled: isAssistantRoute }}
         componentsProps={{
-          Wrapper: { className: 'u-bg-transparent u-elevation-0' }
+          Wrapper: {
+            className: cx('u-elevation-0', {
+              'u-border-bottom': isAssistantRoute,
+              'u-bg-transparent': !isAssistantRoute,
+              [styles['topbar-border']]: isAssistantRoute
+            })
+          }
         }}
       />
-      <BackgroundContainer />
+      {!isAssistantRoute && <BackgroundContainer />}
       <ReloadFocus />
-      <MainView>
+      <MainView isFullHeight={isAssistantRoute}>
         <BackupNotification />
         <div
-          className="u-flex u-flex-column u-flex-content-start u-flex-content-stretch u-w-100 u-m-auto u-pos-relative"
+          className={cx(
+            'u-flex u-flex-column u-flex-content-start u-flex-content-stretch u-w-100 u-pos-relative',
+            {
+              'u-m-auto': !isAssistantRoute,
+              'u-h-100': isAssistantRoute
+            }
+          )}
           ref={didInit ? div => setContentWrapper(div) : null}
         >
           <MoveModal />
-          <HeroHeader />
+          {!isAssistantRoute && <HeroHeader />}
           {hasError && (
             <main className="u-flex u-flex-items-center u-flex-justify-center">
               <Failure errorType="initial" />
@@ -145,10 +167,6 @@ const App = () => {
                     />
                   }
                 >
-                  <Route
-                    path="assistant/:conversationId"
-                    element={<AssistantDialog />}
-                  />
                   <Route path="search" element={<SearchDialog />} />
 
                   <Route path=":konnectorSlug/*" element={<Konnector />} />
@@ -161,6 +179,11 @@ const App = () => {
                     <Route path=":category" element={<StoreRedirection />} />
                   </Route>
                 </Route>
+
+                <Route
+                  path="/connected/assistant/:conversationId"
+                  element={<AssistantDialog />}
+                />
 
                 <Route path="/redirect" element={<IntentRedirect />} />
 
