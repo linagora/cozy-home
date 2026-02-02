@@ -129,6 +129,11 @@
       "type": "cc.cozycloud.announcements.uploads",
       "verbs": ["GET"],
       "description": "Remote-doctype required to get announcements images"
+    },
+    "assistants": {
+      "type": "io.cozy.ai.chat.assistants",
+      "verbs": ["ALL"],
+      "description": "Remote-doctype required to fetch, create and update assistant data"
     }
   },
   "routes": {
