@@ -12823,10 +12823,10 @@ rooks@7.14.1:
     raf "^3.4.1"
     use-sync-external-store "^1.2.0"
 
-rsbuild-config-cozy-app@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/rsbuild-config-cozy-app/-/rsbuild-config-cozy-app-0.6.0.tgz#66887eea5abcc63f924fa353f62bea3d90c07d79"
-  integrity sha512-/FMlpLBLbOZP5sIuzjA8Jbc+IN+zloDtOffhMKqaBZ8ucRcOMGgcDaZmNyAhbzkVeinnutq5QhwcAorp6K+7ZQ==
+rsbuild-config-cozy-app@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/rsbuild-config-cozy-app/-/rsbuild-config-cozy-app-0.7.1.tgz#ebc2aa29e8726610d486568681a9806a14bc8696"
+  integrity sha512-ZDiT5WUGFOW7aCRFbhvpYCqYclyB4rHL1Y/tisM/SwW6kCGkSbTDTbrxXi6iGIM9G7t0tox87wKxROvUfpSvZA==
   dependencies:
     "@rsbuild/plugin-node-polyfill" "1.4.2"
     "@rsbuild/plugin-react" "1.4.0"
