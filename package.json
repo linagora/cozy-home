@@ -112,6 +112,7 @@
     "rsbuild-config-cozy-app": "^0.7.1",
     "stylint": "2.0.0",
     "stylus": "0.55.0",
+    "typescript": "4.9.5",
     "url-search-params-polyfill": "8.1.1"
   }
 }
