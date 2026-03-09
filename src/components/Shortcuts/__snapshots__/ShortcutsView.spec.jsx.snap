@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Shortcuts Should display a shortcut directory with its files 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -40,6 +40,7 @@ Object {
                     >
                       <span
                         class="MuiBadge-root-9 styles__SquareAppIcon-wrapper___3aoSx styles__SquareAppIcon-wrapper--light___AqjR- undefined"
+                        style="background: linear-gradient(136deg, #F19E86 14.84%, #F95967 96.03%);"
                       >
                         <h2
                           class="MuiTypography-root-32 makeStyles-letter-4 MuiTypography-h2-38 MuiTypography-colorTextPrimary-57 MuiTypography-alignCenter-48"
@@ -239,6 +240,7 @@ Object {
                   >
                     <span
                       class="MuiBadge-root-9 styles__SquareAppIcon-wrapper___3aoSx styles__SquareAppIcon-wrapper--light___AqjR- undefined"
+                      style="background: linear-gradient(136deg, #F19E86 14.84%, #F95967 96.03%);"
                     >
                       <h2
                         class="MuiTypography-root-32 makeStyles-letter-4 MuiTypography-h2-38 MuiTypography-colorTextPrimary-57 MuiTypography-alignCenter-48"
@@ -363,7 +365,7 @@ Object {
 `;
 
 exports[`Shortcuts Should display multiple sections for multiple directories 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -402,6 +404,7 @@ Object {
                     >
                       <span
                         class="MuiBadge-root-177 styles__SquareAppIcon-wrapper___3aoSx styles__SquareAppIcon-wrapper--light___AqjR- undefined"
+                        style="background: linear-gradient(136deg, #F8D280 14.84%, #F2AC69 96.03%);"
                       >
                         <h2
                           class="MuiTypography-root-200 makeStyles-letter-172 MuiTypography-h2-206 MuiTypography-colorTextPrimary-225 MuiTypography-alignCenter-216"
@@ -501,6 +504,7 @@ Object {
                     >
                       <span
                         class="MuiBadge-root-235 styles__SquareAppIcon-wrapper___3aoSx styles__SquareAppIcon-wrapper--light___AqjR- undefined"
+                        style="background: linear-gradient(136deg, #F19E86 14.84%, #F95967 96.03%);"
                       >
                         <h2
                           class="MuiTypography-root-258 makeStyles-letter-172 MuiTypography-h2-264 MuiTypography-colorTextPrimary-283 MuiTypography-alignCenter-274"
@@ -793,6 +797,7 @@ Object {
                   >
                     <span
                       class="MuiBadge-root-177 styles__SquareAppIcon-wrapper___3aoSx styles__SquareAppIcon-wrapper--light___AqjR- undefined"
+                      style="background: linear-gradient(136deg, #F8D280 14.84%, #F2AC69 96.03%);"
                     >
                       <h2
                         class="MuiTypography-root-200 makeStyles-letter-172 MuiTypography-h2-206 MuiTypography-colorTextPrimary-225 MuiTypography-alignCenter-216"
@@ -892,6 +897,7 @@ Object {
                   >
                     <span
                       class="MuiBadge-root-235 styles__SquareAppIcon-wrapper___3aoSx styles__SquareAppIcon-wrapper--light___AqjR- undefined"
+                      style="background: linear-gradient(136deg, #F19E86 14.84%, #F95967 96.03%);"
                     >
                       <h2
                         class="MuiTypography-root-258 makeStyles-letter-172 MuiTypography-h2-264 MuiTypography-colorTextPrimary-283 MuiTypography-alignCenter-274"
