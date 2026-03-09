@@ -81,6 +81,9 @@
   },
   "devDependencies": {
     "@rsbuild/core": "^1.5.15",
+    "@swc-contrib/mut-cjs-exports": "^14.7.0",
+    "@swc/core": "^1.15.18",
+    "@swc/jest": "^0.2.39",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.3.0",
     "@testing-library/react-hooks": "8.0.1",
@@ -88,7 +91,6 @@
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "@welldone-software/why-did-you-render": "8.0.3",
-    "babel-jest": "27.5.1",
     "babel-preset-cozy-app": "2.0.2",
     "bundlemon": "3.1.0",
     "cozy-app-publish": "^0.41.0",

@@ -47,6 +47,9 @@ coverage/
 # Dev data
 cozy_dev.json
 
+# SWC
+.swc
+
 # Default
 # /!\ KEEP THIS SECTION THE LAST ONE
 !.gitkeep
