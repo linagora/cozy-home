@@ -5332,10 +5332,10 @@ cozy-ui-plus@^4.0.0:
     react-final-form-arrays "3.1.4"
     rooks "7.14.1"
 
-cozy-ui@^135.6.0:
-  version "135.6.0"
-  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-135.6.0.tgz#813803ad0de704b9c18f5c6c28ead0b2c1bc37ac"
-  integrity sha512-Ihr22z78Dc9V6vcZOifimz9ScDq1bopH5ifg0RAAgZH1dUkGUB9aM7bo4z9HsxhkUz+2QeJK8bD8MGv44lho9g==
+cozy-ui@^137.0.1:
+  version "137.0.1"
+  resolved "https://registry.yarnpkg.com/cozy-ui/-/cozy-ui-137.0.1.tgz#982504a051a3212329796f65a5581d82b716bcdb"
+  integrity sha512-z9Cr1Q6wlTX+H8VA8oNqa9BPE5BnqtRGxl/+ZpJaV61nf9hgNUgU0tkXDwKAMCG98j46PeHvnwD6ldP+QHd5WQ==
   dependencies:
     "@babel/runtime" "^7.3.4"
     "@date-io/date-fns" "1"
@@ -10356,9 +10356,9 @@ msgpack5@^4.0.2:
     readable-stream "^2.3.6"
     safe-buffer "^5.1.2"
 
-"mui-bottom-sheet@https://github.com/cozy/mui-bottom-sheet.git#v1.0.9":
+"mui-bottom-sheet@git+https://github.com/cozy/mui-bottom-sheet.git#v1.0.9":
   version "1.0.8"
-  resolved "https://github.com/cozy/mui-bottom-sheet.git#3dc4c2a245ab39079bc2f73546bccf80847be14c"
+  resolved "git+https://github.com/cozy/mui-bottom-sheet.git#3dc4c2a245ab39079bc2f73546bccf80847be14c"
   dependencies:
     "@juggle/resize-observer" "^3.1.3"
     jest-environment-jsdom-sixteen "^1.0.3"
