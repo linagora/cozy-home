@@ -12,7 +12,6 @@ import { isFlagshipApp } from 'cozy-device-helper'
 import IconSprite from 'cozy-ui/transpiled/react/Icon/Sprite'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 import { Layout } from 'cozy-ui/transpiled/react/Layout'
-import { useCozyTheme } from 'cozy-ui-plus/dist/providers/CozyTheme'
 
 import { AssistantMobileWrapper } from '@/components/Assistant/AssistantMobileWrapper'
 import { AssistantView, SearchDialog } from 'cozy-search'
@@ -53,7 +52,6 @@ const App = () => {
 
   const [didInit, setDidInit] = useState(false)
   const webviewIntent = useWebviewIntent()
-  const theme = useCozyTheme()
 
   const homeMagicFolderConn = mkHomeMagicFolderConn()
   const { data: magicFolder } = useQuery(
@@ -97,7 +95,6 @@ const App = () => {
     shortcutsDirectories !== undefined
   ) {
     if (webviewIntent) {
-      webviewIntent.call('setTheme', theme.variant)
       webviewIntent.call('hideSplashScreen')
     }
 
