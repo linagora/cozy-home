@@ -6050,10 +6050,10 @@ cozy-realtime@^5.6.4:
   dependencies:
     "@cozy/minilog" "^1.0.0"
 
-cozy-search@^0.24.0:
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/cozy-search/-/cozy-search-0.24.1.tgz#758ac757cdcfb61a9f7a6778ede02efaa8bd1a0c"
-  integrity sha512-ztmB41a4EdF36gWfhKisq50nmkvmpaJ2JRYhqLwHf3Eht78LIkzF/FqLRL0EUjP3MwY5Mc9VQ80RfHHoUIc1oA==
+cozy-search@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/cozy-search/-/cozy-search-0.25.0.tgz#c360e47449cfe50af0272c5d6970f9b5b71501a1"
+  integrity sha512-AoatoFbTWf0Rfj+C5fP6lZthPwbhRSwKNTdjgcZp4svTk14PTMxMVIwHVUSZW9cVOTQf1fStd8NsUc//RhWt/Q==
   dependencies:
     "@assistant-ui/react" "^0.12.5"
     classnames "^2.5.1"
