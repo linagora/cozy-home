@@ -544,6 +544,12 @@
     "edit": "Modifier le raccourci",
     "delete": "Supprimer"
   },
+  "separator": {
+    "add": "Séparateur",
+    "name_placeholder": "Nom du groupe",
+    "rename": "Renommer le séparateur",
+    "remove": "Supprimer le séparateur"
+  },
   "Queue": {
     "header": "Synchronisation :",
     "header_mobile": "%{done} sur %{total}",

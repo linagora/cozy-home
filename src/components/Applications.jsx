@@ -24,7 +24,7 @@ const {
   }
 } = models
 
-const LoadingAppTiles = memo(({ num }) => {
+export const LoadingAppTiles = memo(({ num }) => {
   const { t } = useI18n()
   return (
     <>

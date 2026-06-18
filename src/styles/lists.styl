@@ -140,3 +140,89 @@ div[class*='SquareAppIcon-icon-container'] .section-app-group
     width 100%
     align-items center
     min-width 14px
+
+// Drag & drop reordering of the main one-list home
+.home-grid
+    position relative
+
+// Preview line showing where a dragged separator will land
+.home-separator-ghost
+    position absolute
+    left 0
+    right 0
+    height rem(2)
+    background var(--primaryColor)
+    border-radius rem(2)
+    pointer-events none
+    z-index 2
+
+.home-item
+    // 'manipulation' keeps native scroll alive before the touch long-press
+    // delay, while avoiding double-tap zoom glitches
+    touch-action manipulation
+
+    // A separator always spans the whole grid row and never resizes
+    &--separator
+        grid-column 1 / -1
+
+    // The dragged item leaves a faint placeholder in its current slot while
+    // the DragOverlay clone follows the cursor. pointer-events:none avoids
+    // ghost hover/scale artefacts under the cursor during the drag
+    &--placeholder
+        opacity .25
+        pointer-events none
+
+.home-separator
+    display flex
+    align-items center
+    width 100%
+    height 100%
+
+    &:hover .home-separator-action
+        opacity 1
+        pointer-events auto
+
+.home-separator-action
+    opacity 0
+    // While invisible the buttons must not capture the pointer, otherwise their
+    // stopPropagation creates dead zones where a drag can't be initiated
+    pointer-events none
+    transition opacity 100ms ease
+
+    +small-screen()
+        opacity 1
+        pointer-events auto
+
+.home-separator-input
+    width 100%
+    max-width rem(280)
+
+.home-separator-preview
+    width 100%
+    border-top 2px solid var(--secondaryTextColor)
+
+// No scale here: the dragged clone must keep the exact size of the original,
+// so a separator stays full-width and unchanged while moving
+.home-drag-overlay
+    cursor grabbing
+
+.home-separator-source
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+    width 100%
+    height 100%
+    min-height rem(64)
+    border 1px dashed var(--secondaryTextColor)
+    border-radius rem(8)
+    color var(--secondaryTextColor)
+    cursor grab
+    touch-action manipulation
+    opacity .6
+
+    &:hover
+        opacity 1
+
+    &--dragging
+        opacity .3
