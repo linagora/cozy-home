@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react'
 
+import { Logout } from '@linagora/twake-icons'
 import { useClient } from 'cozy-client'
 import { isFlagshipApp } from 'cozy-device-helper'
 import { useWebviewIntent } from 'cozy-intent'
-import LogoutIcon from 'cozy-ui/transpiled/react/Icons/Logout'
 import { useI18n } from 'twake-i18n'
 
 import CornerButton from './CornerButton'
@@ -35,11 +35,7 @@ const LogoutButton = () => {
         onConfirm={handleConfirm}
       />
 
-      <CornerButton
-        label={t('logout')}
-        icon={LogoutIcon}
-        onClick={handleButton}
-      />
+      <CornerButton label={t('logout')} icon={Logout} onClick={handleButton} />
     </>
   )
 }

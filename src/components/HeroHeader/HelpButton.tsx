@@ -1,8 +1,8 @@
+import { Help } from '@linagora/twake-icons'
 import React from 'react'
 
-import HelpIcon from 'cozy-ui/transpiled/react/Icons/Help'
-import { useI18n } from 'twake-i18n'
 import { useInstanceInfo } from 'cozy-client'
+import { useI18n } from 'twake-i18n'
 
 import CornerButton from './CornerButton'
 
@@ -18,7 +18,7 @@ const HelpButton = (): JSX.Element | null => {
   return (
     <CornerButton
       href={link}
-      icon={HelpIcon}
+      icon={Help}
       label={t('help')}
       rel="noopener noreferrer"
       target="_blank"
