@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
 
 import { FolderDialog } from './FolderDialog'
-import { FolderItem } from './homeLayout'
+import { FolderItem } from './types'
 
 import AppLike from '@/test/AppLike'
 

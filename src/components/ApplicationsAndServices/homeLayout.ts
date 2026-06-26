@@ -5,61 +5,24 @@ import type {
   IOCozyKonnector
 } from 'cozy-client/types/types'
 
+import type {
+  AppFilters,
+  AppItem,
+  Entrypoint,
+  EntrypointItem,
+  FolderMap,
+  GridItem,
+  HomeLayout,
+  KonnectorItem,
+  ShortcutItem,
+  TileItem
+} from './types'
+
 import homeConfig from '@/config/home.json'
 
 const {
   applications: { sortApplicationsList, checkEntrypointCondition }
 } = models
-
-type EntrypointCondition = Parameters<typeof checkEntrypointCondition>[0]
-
-export interface Entrypoint {
-  name: string
-  slug: string
-  hash: string
-  title: Record<string, string>
-  icon: string
-  conditions?: EntrypointCondition[]
-}
-
-export interface AppItem {
-  type: 'app'
-  id: string
-  app: IOCozyApp
-}
-export interface KonnectorItem {
-  type: 'konnector'
-  id: string
-  konnector: IOCozyKonnector
-  isInMaintenance: boolean
-  isRunning: boolean
-}
-export interface ShortcutItem {
-  type: 'shortcut'
-  id: string
-  file: IOCozyFile
-}
-export interface EntrypointItem {
-  type: 'entrypoint'
-  id: string
-  entrypoint: Entrypoint
-}
-export type TileItem = AppItem | KonnectorItem | ShortcutItem | EntrypointItem
-
-export interface FolderItem {
-  type: 'folder'
-  id: string
-  name: string
-  items: TileItem[]
-}
-
-export type GridItem = TileItem | FolderItem
-
-export interface FolderData {
-  name: string
-  items: string[]
-}
-export type FolderMap = Record<string, FolderData>
 
 const FOLDER_PREFIX = 'folder:'
 // First manifest category usable as a default folder name. Skips the catch-all
@@ -91,12 +54,6 @@ export const makeEntrypointId = (slug: string, name: string): string =>
 export const makeFolderId = (): string =>
   `${FOLDER_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`
 export const isFolderId = (id: string): boolean => id.startsWith(FOLDER_PREFIX)
-
-interface AppFilters {
-  sortSlugs: string[] | null
-  hiddenSlugs: string[]
-  hiddenHomeSlugs: string[]
-}
 
 export const buildAppItems = (
   apps: IOCozyApp[] | null | undefined,
@@ -144,11 +101,6 @@ export const buildShortcutItems = (
     id: makeShortcutId(file._id),
     file
   }))
-}
-
-export interface HomeLayout {
-  order: string[]
-  folders: FolderMap
 }
 
 const omit = (folders: FolderMap, id: string): FolderMap => {

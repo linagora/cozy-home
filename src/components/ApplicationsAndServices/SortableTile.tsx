@@ -4,13 +4,7 @@ import cx from 'classnames'
 import React, { memo } from 'react'
 
 import { TileContent } from './TileContent'
-import { GridItem } from './homeLayout'
-
-interface SortableTileProps {
-  item: GridItem
-  combineTarget: boolean
-  onOpenFolder: (id: string) => void
-}
+import { SortableTileProps } from './types'
 
 const SortableTileComponent = ({
   item,

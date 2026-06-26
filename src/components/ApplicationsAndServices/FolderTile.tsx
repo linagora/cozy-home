@@ -3,8 +3,7 @@ import React from 'react'
 import { models } from 'cozy-client'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 
-import { FolderItem, TileItem } from './homeLayout'
-import { AppIcon } from './types'
+import { AppIcon, FolderTileProps, TileItem } from './types'
 
 const {
   file: { getShortcutImgSrc }
@@ -47,11 +46,6 @@ const PreviewIcon = ({ item }: { item: TileItem }): JSX.Element | null => {
     default:
       return null
   }
-}
-
-interface FolderTileProps {
-  folder: FolderItem
-  onOpen: (id: string) => void
 }
 
 export const FolderTile = ({

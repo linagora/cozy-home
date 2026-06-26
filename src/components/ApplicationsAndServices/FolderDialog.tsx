@@ -11,14 +11,11 @@ import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import { useI18n } from 'twake-i18n'
 
 import { TileContent } from './TileContent'
-import { FolderItem, TileItem } from './homeLayout'
-import { TextField } from './types'
-
-interface FolderDialogItemProps {
-  item: TileItem
-  onRemove: (itemId: string) => void
-  removeLabel: string
-}
+import {
+  FolderDialogItemProps,
+  FolderDialogProps,
+  TextField
+} from './types'
 
 const FolderDialogItem = ({
   item,
@@ -54,14 +51,6 @@ const FolderDialogItem = ({
       </div>
     </div>
   )
-}
-
-interface FolderDialogProps {
-  folder: FolderItem
-  onClose: () => void
-  onRename: (id: string, name: string) => void
-  onDissolve: (id: string) => void
-  onRemoveItem: (folderId: string, itemId: string) => void
 }
 
 export const FolderDialog = ({

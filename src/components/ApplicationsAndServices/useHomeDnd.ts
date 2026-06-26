@@ -18,9 +18,6 @@ import { useI18n } from 'twake-i18n'
 
 import { DWELL_MS, isOutsideDialog, isOverCentre } from './dndGeometry'
 import {
-  FolderItem,
-  HomeLayout,
-  TileItem,
   addToFolder,
   buildGrid,
   createFolder,
@@ -30,12 +27,13 @@ import {
   removeFromFolder,
   reorderFolderItems
 } from './homeLayout'
-
-interface UseHomeDndParams {
-  items: TileItem[]
-  layout: HomeLayout
-  saveLayout: (next: HomeLayout) => void
-}
+import {
+  FolderItem,
+  HomeLayout,
+  TileItem,
+  UseHomeDndParams,
+  UseHomeDndResult
+} from './types'
 
 // Owns the home grid drag-and-drop only: reorder via live shuffle, hold-to-group
 // (the icon is dropped into the folder, which opens for repositioning) and the
@@ -44,23 +42,7 @@ export const useHomeDnd = ({
   items,
   layout,
   saveLayout
-}: UseHomeDndParams): {
-  grid: ReturnType<typeof buildGrid>
-  ids: string[]
-  activeId: string | null
-  combineTargetId: string | null
-  openFolder: FolderItem | undefined
-  draggedItem: TileItem | FolderItem | undefined
-  effectiveLayout: HomeLayout
-  sensors: ReturnType<typeof useSensors>
-  collisionDetection: CollisionDetection
-  setOpenFolderId: (id: string | null) => void
-  handleSave: (next: HomeLayout) => void
-  handleDragStart: (event: DragStartEvent) => void
-  handleDragMove: (event: DragMoveEvent) => void
-  handleDragCancel: () => void
-  handleDragEnd: (event: DragEndEvent) => void
-} => {
+}: UseHomeDndParams): UseHomeDndResult => {
   const { t } = useI18n()
 
   const [activeId, setActiveId] = useState<string | null>(null)

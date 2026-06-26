@@ -1,7 +1,6 @@
 import type { IOCozyApp, IOCozyKonnector } from 'cozy-client/types/types'
 
 import {
-  AppItem,
   addToFolder,
   addToFolderAt,
   buildAppItems,
@@ -19,6 +18,7 @@ import {
   renameFolder,
   reorderFolderItems
 } from './homeLayout'
+import type { AppItem } from './types'
 
 const makeApp = (slug: string, state = 'ready'): IOCozyApp =>
   ({ slug, state }) as unknown as IOCozyApp

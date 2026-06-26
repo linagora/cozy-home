@@ -1,17 +1,12 @@
 import React from 'react'
 
 import { FolderTile } from './FolderTile'
-import { GridItem } from './homeLayout'
+import { TileContentProps } from './types'
 
 import AppTile from '@/components/AppTile'
 import EntrypointLink from '@/components/EntrypointLink'
 import KonnectorTile from '@/components/KonnectorTile'
 import ShortcutLink from '@/components/ShortcutLink'
-
-interface TileContentProps {
-  item: GridItem
-  onOpenFolder: (id: string) => void
-}
 
 export const TileContent = ({
   item,

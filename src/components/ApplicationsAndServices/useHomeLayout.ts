@@ -11,13 +11,17 @@ import type { IOCozyApp, IOCozyKonnector } from 'cozy-client/types/types'
 import flag from 'cozy-flags'
 
 import {
-  HomeLayout,
-  TileItem,
   buildAppItems,
   buildEntrypointItems,
   buildKonnectorItems,
   buildShortcutItems
 } from './homeLayout'
+import type {
+  HomeLayout,
+  SettingsShape,
+  TileItem,
+  UseHomeLayout
+} from './types'
 
 import {
   fetchRunningKonnectors,
@@ -31,21 +35,6 @@ const toArray = (v: unknown): string[] =>
   Array.isArray(v) ? (v as string[]) : []
 const toArrayOrNull = (v: unknown): string[] | null =>
   Array.isArray(v) ? (v as string[]) : null
-
-interface SettingsShape {
-  query: { fetchStatus: string; lastFetch?: number }
-  values?: { homeLayout?: HomeLayout }
-  save: (data: { homeLayout: HomeLayout }) => void
-}
-
-export interface UseHomeLayout {
-  hasLoaded: boolean
-  isAppsLoading: boolean
-  items: TileItem[]
-  layout: HomeLayout
-  apps: IOCozyApp[]
-  saveLayout: (layout: HomeLayout) => void
-}
 
 export const useHomeLayout = (): UseHomeLayout => {
   const { data: apps } = useQuery(appsConn.query, appsConn) as {
