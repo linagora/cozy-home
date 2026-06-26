@@ -1,6 +1,6 @@
 import { DndContext, DragOverlay, MeasuringStrategy } from '@dnd-kit/core'
 import { SortableContext, rectSortingStrategy } from '@dnd-kit/sortable'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import flag from 'cozy-flags'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
@@ -10,13 +10,10 @@ import LegacyApplicationsAndServices from './LegacyApplicationsAndServices'
 import { SortableTile } from './SortableTile'
 import { TileContent } from './TileContent'
 import { noSortStrategy } from './dndGeometry'
-import {
-  dissolveFolder,
-  removeFromFolder,
-  renameFolder
-} from './homeLayout'
+import { dissolveFolder, removeFromFolder, renameFolder } from './homeLayout'
 import { LoadingAppTiles } from './types'
 import { useHomeDnd } from './useHomeDnd'
+import { useHomeLayout } from './useHomeLayout'
 
 import AddTile from '@/components/AddTile'
 import AppHighlightAlertWrapper from '@/components/AppHighlightAlert/AppHighlightAlertWrapper'
@@ -26,11 +23,17 @@ import LogoutTile from '@/components/LogoutTile'
 export const ApplicationsAndServices = (): JSX.Element => {
   const showLogout = Boolean(flag('home.mainlist.show-logout'))
   const { isMobile } = useBreakpoints()
+  const { hasLoaded, isAppsLoading, items, layout, apps, saveLayout } =
+    useHomeLayout()
+  const appsForAlerts = useMemo(
+    () =>
+      items
+        .filter(i => i.type === 'app')
+        .map(i => (i.type === 'app' ? i.app : null))
+        .filter(Boolean),
+    [items]
+  )
   const {
-    hasLoaded,
-    isAppsLoading,
-    apps,
-    appsForAlerts,
     grid,
     ids,
     combineTargetId,
@@ -45,7 +48,7 @@ export const ApplicationsAndServices = (): JSX.Element => {
     handleDragMove,
     handleDragCancel,
     handleDragEnd
-  } = useHomeDnd()
+  } = useHomeDnd({ items, layout, saveLayout })
 
   return (
     <div className="app-list-wrapper u-m-auto u-w-100">

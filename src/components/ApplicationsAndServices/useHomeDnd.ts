@@ -30,16 +30,21 @@ import {
   removeFromFolder,
   reorderFolderItems
 } from './homeLayout'
-import { useHomeLayout } from './useHomeLayout'
 
-// Owns the home grid drag-and-drop: reorder via live shuffle, hold-to-group
+interface UseHomeDndParams {
+  items: TileItem[]
+  layout: HomeLayout
+  saveLayout: (next: HomeLayout) => void
+}
+
+// Owns the home grid drag-and-drop only: reorder via live shuffle, hold-to-group
 // (the icon is dropped into the folder, which opens for repositioning) and the
-// open-folder dialog state. The component just renders what this returns.
-export const useHomeDnd = (): {
-  hasLoaded: boolean
-  isAppsLoading: boolean
-  apps: ReturnType<typeof useHomeLayout>['apps']
-  appsForAlerts: unknown[]
+// open-folder dialog state. Data loading stays in useHomeLayout, in the caller.
+export const useHomeDnd = ({
+  items,
+  layout,
+  saveLayout
+}: UseHomeDndParams): {
   grid: ReturnType<typeof buildGrid>
   ids: string[]
   activeId: string | null
@@ -57,8 +62,6 @@ export const useHomeDnd = (): {
   handleDragEnd: (event: DragEndEvent) => void
 } => {
   const { t } = useI18n()
-  const { hasLoaded, isAppsLoading, items, layout, apps, saveLayout } =
-    useHomeLayout()
 
   const [activeId, setActiveId] = useState<string | null>(null)
   // Tile/folder currently highlighted as the hold target (visual feedback).
@@ -88,14 +91,6 @@ export const useHomeDnd = (): {
     [effectiveLayout, items]
   )
   const ids = useMemo(() => grid.map(g => g.id), [grid])
-  const appsForAlerts = useMemo(
-    () =>
-      items
-        .filter(i => i.type === 'app')
-        .map(i => (i.type === 'app' ? i.app : null))
-        .filter(Boolean),
-    [items]
-  )
 
   const openFolder = grid.find(
     (g): g is FolderItem => g.id === openFolderId && g.type === 'folder'
@@ -302,10 +297,6 @@ export const useHomeDnd = (): {
     openFolder?.items.find(i => i.id === activeId)
 
   return {
-    hasLoaded,
-    isAppsLoading,
-    apps,
-    appsForAlerts,
     grid,
     ids,
     activeId,
