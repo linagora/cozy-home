@@ -1,5 +1,3 @@
-import uniqBy from 'lodash/uniqBy'
-
 import { models } from 'cozy-client'
 import type {
   IOCozyApp,
@@ -112,7 +110,12 @@ export const buildAppItems = (
       !hiddenSlugs.includes(app.slug.toLowerCase()) &&
       !hiddenHomeSlugs.includes(app.slug.toLowerCase())
   )
-  const deduped = uniqBy(visible, 'slug')
+  const seenSlugs = new Set<string>()
+  const deduped = visible.filter(app => {
+    if (seenSlugs.has(app.slug)) return false
+    seenSlugs.add(app.slug)
+    return true
+  })
   const sorted = (
     sortSlugs ? sortApplicationsList(deduped, sortSlugs) : deduped
   ) as IOCozyApp[]

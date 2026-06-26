@@ -1,5 +1,3 @@
-import keyBy from 'lodash/keyBy'
-import sortBy from 'lodash/sortBy'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -78,8 +76,10 @@ export const useHomeLayout = (): UseHomeLayout => {
     (): TileItem[] => [
       ...buildAppItems(apps, { sortSlugs, hiddenSlugs, hiddenHomeSlugs }),
       ...buildKonnectorItems(
-        sortBy(installedKonnectors ?? [], k => k.name.toLowerCase()),
-        new Set(Object.keys(keyBy(maintenance, 'slug'))),
+        [...(installedKonnectors ?? [])].sort((a, b) =>
+          a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        ),
+        new Set(maintenance.map(k => k.slug)),
         getRunningKonnectors(jobData)
       ),
       ...buildShortcutItems(shortcuts),
