@@ -360,7 +360,7 @@ export const ApplicationsAndServices = (): JSX.Element => {
         onDragCancel={handleDragCancel}
         onDragEnd={handleDragEnd}
       >
-        <div className="home-grid app-list app-list--gutter u-w-100 u-mh-auto u-flex-justify-center">
+        <div className="app-list app-list--gutter u-pos-relative u-w-100 u-mh-auto u-flex-justify-center">
           {!hasLoaded || isAppsLoading ? (
             <LoadingAppTiles num={6} />
           ) : (
