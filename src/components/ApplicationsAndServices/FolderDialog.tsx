@@ -8,19 +8,11 @@ import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import CrossCircleOutlineIcon from 'cozy-ui/transpiled/react/Icons/CrossCircleOutline'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
-import UntypedTextField from 'cozy-ui/transpiled/react/TextField'
 import { useI18n } from 'twake-i18n'
 
 import { TileContent } from './TileContent'
 import { FolderItem, TileItem } from './homeLayout'
-
-const TextField = UntypedTextField as React.FC<{
-  value: string
-  placeholder: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur: () => void
-  variant: string
-}>
+import { TextField } from './types'
 
 interface FolderDialogItemProps {
   item: TileItem

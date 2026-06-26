@@ -1,20 +1,14 @@
 import React from 'react'
 
 import { models } from 'cozy-client'
-import UntypedAppIcon from 'cozy-ui-plus/dist/AppIcon'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 
 import { FolderItem, TileItem } from './homeLayout'
+import { AppIcon } from './types'
 
 const {
   file: { getShortcutImgSrc }
 } = models
-
-const AppIcon = UntypedAppIcon as React.FC<{
-  app: unknown
-  type?: 'app' | 'konnector'
-  className?: string
-}>
 
 // A single inner item rendered as a small icon for the folder preview. Every
 // item type resolves to the same square so the preview stays uniform.

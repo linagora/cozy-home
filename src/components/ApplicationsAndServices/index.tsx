@@ -45,15 +45,13 @@ import {
   renameFolder,
   reorderFolderItems
 } from './homeLayout'
+import { LoadingAppTiles } from './types'
 import { useHomeLayout } from './useHomeLayout'
 
 import AddTile from '@/components/AddTile'
 import AppHighlightAlertWrapper from '@/components/AppHighlightAlert/AppHighlightAlertWrapper'
-import { LoadingAppTiles as UntypedLoadingAppTiles } from '@/components/Applications'
 import AssistantTile from '@/components/AssistantTile'
 import LogoutTile from '@/components/LogoutTile'
-
-const LoadingAppTiles = UntypedLoadingAppTiles as React.FC<{ num: number }>
 
 // How long the dragged tile must hover (hold) over another tile before the
 // gesture is treated as "into the group": a regular tile folds into a new
