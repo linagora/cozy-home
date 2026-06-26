@@ -10,11 +10,7 @@ import type {
 import homeConfig from '@/config/home.json'
 
 const {
-  applications: {
-    sortApplicationsList,
-    selectEntrypoints,
-    checkEntrypointCondition
-  }
+  applications: { sortApplicationsList, checkEntrypointCondition }
 } = models
 
 type EntrypointCondition = Parameters<typeof checkEntrypointCondition>[0]
@@ -352,24 +348,19 @@ export const buildEntrypointItems = (
   apps: IOCozyApp[] | null | undefined
 ): EntrypointItem[] => {
   if (!Array.isArray(apps)) return []
-  const drive = apps.find(a => a.slug === 'drive') as
-    | (IOCozyApp & { entrypoints?: Entrypoint[] })
-    | undefined
-  if (!drive) return []
-  const selected = selectEntrypoints(drive.entrypoints ?? [], [
-    'new-file-type-text',
-    'new-file-type-sheet',
-    'new-file-type-slide'
-  ]) as Entrypoint[]
-  const filtered = selected.filter(ep =>
-    (ep.conditions ?? []).every(c => {
-      if (c.type === 'flag' && c.name === 'bar.onlyoffice.enabled') return true
-      return checkEntrypointCondition(c)
-    })
+  return apps.flatMap(app =>
+    ((app as IOCozyApp & { entrypoints?: Entrypoint[] }).entrypoints ?? [])
+      .filter(ep =>
+        (ep.conditions ?? []).every(c => {
+          if (c.type === 'flag' && c.name === 'bar.onlyoffice.enabled')
+            return true
+          return checkEntrypointCondition(c)
+        })
+      )
+      .map(ep => ({
+        type: 'entrypoint' as const,
+        id: makeEntrypointId(app.slug, ep.name),
+        entrypoint: { ...ep, slug: app.slug }
+      }))
   )
-  return filtered.map(ep => ({
-    type: 'entrypoint',
-    id: makeEntrypointId(drive.slug, ep.name),
-    entrypoint: { ...ep, slug: drive.slug }
-  }))
 }
