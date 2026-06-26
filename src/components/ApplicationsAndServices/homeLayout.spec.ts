@@ -9,7 +9,6 @@ import {
   buildKonnectorItems,
   buildShortcutItems,
   createFolder,
-  createFolderFromTile,
   dissolveFolder,
   folderCategoryFromDoc,
   isFolderId,
@@ -247,16 +246,6 @@ describe('folder operations', () => {
     const next = addToFolder(start, 'folder:x', 'app:notes')
     expect(next.order).toEqual(['folder:x'])
     expect(next.folders['folder:x'].items).toEqual(['app:drive', 'app:notes'])
-  })
-
-  it('createFolderFromTile makes a single-item folder at the tile slot', () => {
-    const start = {
-      order: ['app:drive', 'app:notes', 'app:photos'],
-      folders: {} as Record<string, { name: string; items: string[] }>
-    }
-    const next = createFolderFromTile(start, 'app:notes', 'folder:x', 'New')
-    expect(next.order).toEqual(['app:drive', 'folder:x', 'app:photos'])
-    expect(next.folders['folder:x']).toEqual({ name: 'New', items: ['app:notes'] })
   })
 
   it('addToFolderAt inserts the dragged id at the given index', () => {

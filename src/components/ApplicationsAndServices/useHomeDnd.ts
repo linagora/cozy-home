@@ -21,9 +21,9 @@ import {
   FolderItem,
   HomeLayout,
   TileItem,
-  addToFolderAt,
+  addToFolder,
   buildGrid,
-  createFolderFromTile,
+  createFolder,
   folderCategoryFromDoc,
   isFolderId,
   makeFolderId,
@@ -32,9 +32,9 @@ import {
 } from './homeLayout'
 import { useHomeLayout } from './useHomeLayout'
 
-// Owns the home grid drag-and-drop: reorder via live shuffle, hold-to-group,
-// spring-loaded folders and the open-folder dialog state. The component just
-// renders what this returns.
+// Owns the home grid drag-and-drop: reorder via live shuffle, hold-to-group
+// (the icon is dropped into the folder, which opens for repositioning) and the
+// open-folder dialog state. The component just renders what this returns.
 export const useHomeDnd = (): {
   hasLoaded: boolean
   isAppsLoading: boolean
@@ -65,8 +65,9 @@ export const useHomeDnd = (): {
   const [combineTargetId, setCombineTargetId] = useState<string | null>(null)
   // Pending "hold over a tile/folder" timer, armed on each over change.
   const dwellTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  // Folder that sprang open during the current drag (so the drop lands inside).
-  const springFolderRef = useRef<string | null>(null)
+  // Set once the dragged icon has been dropped into a folder on dwell, so the
+  // rest of the gesture (moves, drop) is ignored.
+  const committedRef = useRef(false)
   // Tile whose central zone the dragged icon currently rests in (dwell target).
   const centralTargetRef = useRef<string | null>(null)
   // Whether the active item is being dragged from inside the open folder.
@@ -159,7 +160,7 @@ export const useHomeDnd = (): {
     setActiveId(id)
     clearDwell()
     setCombineTargetId(null)
-    springFolderRef.current = null
+    committedRef.current = false
     centralTargetRef.current = null
     const fromFolder = Boolean(openFolder?.items.some(i => i.id === id))
     dragSourceRef.current = fromFolder ? 'folder' : 'grid'
@@ -176,11 +177,12 @@ export const useHomeDnd = (): {
 
   // Siblings shuffle live (rectSortingStrategy) to preview a reorder. Holding
   // the dragged icon over another tile's central zone instead starts a dwell:
-  // while the hold target is set the shuffle freezes (noSortStrategy) so the
-  // target stays put, and after DWELL_MS a group springs open around it.
+  // while the hold target is set the shuffle freezes (noSortStrategy). When the
+  // dwell completes the icon is dropped straight into the group (existing folder
+  // or a new one around the held tile), which opens for repositioning.
   const handleDragMove = ({ active, over }: DragMoveEvent): void => {
     if (dragSourceRef.current === 'folder') return
-    if (springFolderRef.current) return // already inside a sprung-open folder
+    if (committedRef.current) return // already dropped into a folder
     const id = String(active.id)
     const overId = over ? String(over.id) : null
     const central =
@@ -205,24 +207,29 @@ export const useHomeDnd = (): {
     clearDwell()
     const overIsFolder = isFolderId(overId)
     dwellTimerRef.current = setTimeout(() => {
-      setCombineTargetId(null)
+      const baseLayout = dragLayoutRef.current ?? effectiveLayout
+      let next: HomeLayout
+      let folderToOpen: string
       if (overIsFolder) {
-        springFolderRef.current = overId
-        setOpenFolderId(overId)
-        return
+        next = addToFolder(baseLayout, overId, id)
+        folderToOpen = overId
+      } else {
+        folderToOpen = makeFolderId()
+        next = createFolder(
+          baseLayout,
+          overId,
+          id,
+          () => folderToOpen,
+          folderNameForDragged(id)
+        )
       }
-      // Create a new folder around the held tile and spring it open.
-      const newFolderId = makeFolderId()
-      const next = createFolderFromTile(
-        dragLayoutRef.current ?? effectiveLayout,
-        overId,
-        newFolderId,
-        folderNameForDragged(id)
-      )
+      committedRef.current = true
       dragLayoutRef.current = next
-      springFolderRef.current = newFolderId
       setLocalLayout(next)
-      setOpenFolderId(newFolderId)
+      saveLayout(next)
+      setOpenFolderId(folderToOpen)
+      setCombineTargetId(null)
+      setActiveId(null) // hide the drag overlay: the icon is now dropped inside
     }, DWELL_MS)
   }
 
@@ -231,8 +238,7 @@ export const useHomeDnd = (): {
     clearDwell()
     setCombineTargetId(null)
     centralTargetRef.current = null
-    if (springFolderRef.current) setOpenFolderId(null)
-    springFolderRef.current = null
+    committedRef.current = false
     dragLayoutRef.current = null
     setLocalLayout(null)
   }
@@ -240,14 +246,18 @@ export const useHomeDnd = (): {
   const handleDragEnd = ({ active, over }: DragEndEvent): void => {
     const draggedId = String(active.id)
     const source = dragSourceRef.current
-    const spring = springFolderRef.current
     const base = dragLayoutRef.current ?? effectiveLayout
     const overId = over ? String(over.id) : null
     setActiveId(null)
     clearDwell()
     setCombineTargetId(null)
     centralTargetRef.current = null
-    springFolderRef.current = null
+
+    // Already dropped into a folder on dwell: nothing more to do.
+    if (committedRef.current) {
+      committedRef.current = false
+      return
+    }
 
     // 1) An item dragged from inside the open folder.
     if (source === 'folder' && openFolder) {
@@ -273,27 +283,7 @@ export const useHomeDnd = (): {
       return
     }
 
-    // 2) A grid item dropped into a folder that sprang open mid-drag (existing
-    // or just created around the held tile).
-    if (spring) {
-      if (!isOutsideDialog(active)) {
-        const folderItems = base.folders[spring]?.items ?? []
-        const idx = overId ? folderItems.indexOf(overId) : -1
-        const index = idx === -1 ? folderItems.length : idx
-        const next = addToFolderAt(base, spring, draggedId, index)
-        setLocalLayout(next)
-        saveLayout(next)
-        setOpenFolderId(spring)
-      } else {
-        // Pulled back out: cancel. Reverting localLayout drops a folder that was
-        // created mid-drag (never saved) and restores the dragged tile's slot.
-        setOpenFolderId(null)
-        setLocalLayout(null)
-      }
-      return
-    }
-
-    // 3) Plain grid reorder to wherever the live shuffle previewed.
+    // 2) Plain grid reorder to wherever the live shuffle previewed.
     if (overId && overId !== draggedId) {
       const from = base.order.indexOf(draggedId)
       const to = base.order.indexOf(overId)

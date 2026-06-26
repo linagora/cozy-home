@@ -210,23 +210,6 @@ export const buildGrid = (
   return grid
 }
 
-// Creates a folder holding a single tile, taking that tile's slot. Used to
-// spring a brand-new folder open mid-drag so the dragged icon can then be
-// dropped inside it.
-export const createFolderFromTile = (
-  layout: HomeLayout,
-  tileId: string,
-  folderId: string,
-  name = ''
-): HomeLayout => {
-  if (isFolderId(tileId)) return layout
-  const order = layout.order.map(id => (id === tileId ? folderId : id))
-  return {
-    order,
-    folders: { ...layout.folders, [folderId]: { name, items: [tileId] } }
-  }
-}
-
 export const createFolder = (
   layout: HomeLayout,
   targetId: string,
