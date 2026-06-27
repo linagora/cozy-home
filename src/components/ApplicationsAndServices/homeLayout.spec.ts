@@ -123,9 +123,9 @@ describe('folderCategoryFromDoc', () => {
   })
 
   it('prefers a non-empty categories array over the singular field', () => {
-    expect(folderCategoryFromDoc({ categories: ['health'], category: 'cozy' })).toBe(
-      'health'
-    )
+    expect(
+      folderCategoryFromDoc({ categories: ['health'], category: 'cozy' })
+    ).toBe('health')
   })
 
   it('returns null when neither yields a usable category', () => {

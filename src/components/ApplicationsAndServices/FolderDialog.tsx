@@ -63,14 +63,14 @@ export const FolderDialog = ({
   const { t } = useI18n()
   const [name, setName] = useState(folder.name)
 
-  const handleBlur = (): void => {
+  const commitRename = (): void => {
     if (name !== folder.name) onRename(folder.id, name)
   }
 
   // Persist a pending rename even when the dialog closes via Escape, which
   // dismisses before the TextField fires its blur event.
   const handleClose = (): void => {
-    handleBlur()
+    commitRename()
     onClose()
   }
 
@@ -85,7 +85,7 @@ export const FolderDialog = ({
           value={name}
           placeholder={t('folder.name_placeholder')}
           onChange={e => setName(e.target.value)}
-          onBlur={handleBlur}
+          onBlur={commitRename}
           variant="standard"
         />
       }

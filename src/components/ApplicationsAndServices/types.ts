@@ -19,10 +19,6 @@ import UntypedTextField from 'cozy-ui/transpiled/react/TextField'
 
 import { LoadingAppTiles as UntypedLoadingAppTiles } from '@/components/Applications'
 
-const {
-  applications: { checkEntrypointCondition }
-} = models
-
 // --- Typed wrappers for cozy-ui(-plus) components that ship without usable TS
 // types, kept here so the casts are declared once instead of in every file.
 
@@ -46,7 +42,9 @@ export const LoadingAppTiles = UntypedLoadingAppTiles as React.FC<{
 
 // --- Home layout domain types
 
-export type EntrypointCondition = Parameters<typeof checkEntrypointCondition>[0]
+export type EntrypointCondition = Parameters<
+  typeof models.applications.checkEntrypointCondition
+>[0]
 
 export interface Entrypoint {
   name: string
