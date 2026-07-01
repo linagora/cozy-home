@@ -33,7 +33,6 @@
   "dependencies": {
     "@linagora/twake-icons": "^2.6.7",
     "@sentry/react": "7.119.0",
-    "cozy": "^0.5.0",
     "cozy-bar": "^35.1.0",
     "cozy-client": "^60.28.0",
     "cozy-dataproxy-lib": "^4.15.3",
