@@ -65,9 +65,10 @@ describe('FolderDialog', () => {
     expect(onRename).toHaveBeenCalledWith('folder:x', 'Comptes')
   })
 
-  it('dissolves', () => {
+  it('dissolves from the actions menu', () => {
     const { onDissolve } = setup()
-    fireEvent.click(screen.getByTestId('folder-dissolve'))
+    fireEvent.click(screen.getByTestId('folder-menu'))
+    fireEvent.click(screen.getByText('Dissolve the folder'))
     expect(onDissolve).toHaveBeenCalledWith('folder:x')
   })
 

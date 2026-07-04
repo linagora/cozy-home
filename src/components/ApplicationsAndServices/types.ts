@@ -14,8 +14,11 @@ import type {
   IOCozyFile,
   IOCozyKonnector
 } from 'cozy-client/types/types'
-import UntypedAppIcon from 'cozy-ui-plus/dist/AppIcon'
+import UntypedActionsMenu from 'cozy-ui/transpiled/react/ActionsMenu'
+import { makeActions as untypedMakeActions } from 'cozy-ui/transpiled/react/ActionsMenu/Actions'
+import { makeAction as untypedMakeAction } from 'cozy-ui/transpiled/react/ActionsMenu/Actions/makeAction'
 import UntypedTextField from 'cozy-ui/transpiled/react/TextField'
+import UntypedAppIcon from 'cozy-ui-plus/dist/AppIcon'
 
 import { LoadingAppTiles as UntypedLoadingAppTiles } from '@/components/Applications'
 
@@ -39,6 +42,30 @@ export const TextField = UntypedTextField as React.FC<{
 export const LoadingAppTiles = UntypedLoadingAppTiles as React.FC<{
   num: number
 }>
+
+export interface FolderAction {
+  name: string
+  icon: unknown
+  label: string
+  action: () => void
+}
+
+export const makeAction = untypedMakeAction as (a: FolderAction) => unknown
+
+export const makeActions = untypedMakeActions as unknown as (
+  actions: Array<() => unknown>,
+  options?: Record<string, unknown>
+) => unknown[]
+
+export const ActionsMenu =
+  UntypedActionsMenu as React.ForwardRefExoticComponent<
+    {
+      open: boolean
+      actions: unknown[]
+      anchorOrigin?: { vertical: string; horizontal: string }
+      onClose: () => void
+    } & React.RefAttributes<HTMLButtonElement>
+  >
 
 // --- Home layout domain types
 

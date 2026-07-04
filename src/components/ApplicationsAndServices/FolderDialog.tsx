@@ -1,4 +1,8 @@
-import { SortableContext, rectSortingStrategy, useSortable } from '@dnd-kit/sortable'
+import {
+  SortableContext,
+  rectSortingStrategy,
+  useSortable
+} from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import cx from 'classnames'
 import React, { useRef, useState } from 'react'
@@ -7,13 +11,18 @@ import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
 import CrossCircleOutlineIcon from 'cozy-ui/transpiled/react/Icons/CrossCircleOutline'
+import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
 import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
+import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 import { useI18n } from 'twake-i18n'
 
 import { TileContent } from './TileContent'
 import {
+  ActionsMenu,
   FolderDialogItemProps,
   FolderDialogProps,
+  makeAction,
+  makeActions,
   TextField
 } from './types'
 
@@ -22,8 +31,14 @@ const FolderDialogItem = ({
   onRemove,
   removeLabel
 }: FolderDialogItemProps): JSX.Element => {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({ id: item.id })
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging
+  } = useSortable({ id: item.id })
   const style = {
     transform: CSS.Transform.toString(transform),
     transition
@@ -62,6 +77,8 @@ export const FolderDialog = ({
 }: FolderDialogProps): JSX.Element => {
   const { t } = useI18n()
   const [name, setName] = useState(folder.name)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const anchorRef = useRef<HTMLButtonElement>(null)
   // Tracks the last persisted name so blur and close (which both fire when the
   // dialog is dismissed) do not save the same rename twice.
   const committedNameRef = useRef(folder.name)
@@ -81,43 +98,65 @@ export const FolderDialog = ({
   }
 
   const ids = folder.items.map(i => i.id)
+  const actions = makeActions([
+    (): unknown =>
+      makeAction({
+        name: 'DissolveFolder',
+        icon: TrashIcon,
+        label: t('folder.dissolve'),
+        action: () => onDissolve(folder.id)
+      })
+  ])
 
   return (
-    <Dialog
-      open
-      onClose={handleClose}
-      title={
-        <TextField
-          value={name}
-          placeholder={t('folder.name_placeholder')}
-          onChange={e => setName(e.target.value)}
-          onBlur={commitRename}
-          variant="standard"
-        />
-      }
-      actions={
-        <IconButton
-          aria-label={t('folder.dissolve')}
-          data-testid="folder-dissolve"
-          onClick={() => onDissolve(folder.id)}
-        >
-          <Icon icon={TrashIcon} />
-        </IconButton>
-      }
-      content={
-        <SortableContext items={ids} strategy={rectSortingStrategy}>
-          <div className="home-folder-content" data-testid="folder-content">
-            {folder.items.map(item => (
-              <FolderDialogItem
-                key={item.id}
-                item={item}
-                onRemove={id => onRemoveItem(folder.id, id)}
-                removeLabel={t('folder.remove_item')}
-              />
-            ))}
+    <>
+      <Dialog
+        open
+        onClose={handleClose}
+        title={
+          <div className="u-flex u-flex-items-center u-flex-justify-between">
+            <TextField
+              value={name}
+              placeholder={t('folder.name_placeholder')}
+              onChange={e => setName(e.target.value)}
+              onBlur={commitRename}
+              variant="standard"
+            />
+            <IconButton
+              ref={anchorRef}
+              size="small"
+              aria-label={t('folder.actions')}
+              data-testid="folder-menu"
+              onClick={() => setMenuOpen(true)}
+            >
+              <Icon icon={DotsIcon} rotate={90} />
+            </IconButton>
           </div>
-        </SortableContext>
-      }
-    />
+        }
+        content={
+          <SortableContext items={ids} strategy={rectSortingStrategy}>
+            <div className="home-folder-content" data-testid="folder-content">
+              {folder.items.map(item => (
+                <FolderDialogItem
+                  key={item.id}
+                  item={item}
+                  onRemove={id => onRemoveItem(folder.id, id)}
+                  removeLabel={t('folder.remove_item')}
+                />
+              ))}
+            </div>
+          </SortableContext>
+        }
+      />
+      <CozyTheme>
+        <ActionsMenu
+          ref={anchorRef}
+          open={menuOpen}
+          actions={actions}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          onClose={() => setMenuOpen(false)}
+        />
+      </CozyTheme>
+    </>
   )
 }
