@@ -1,7 +1,7 @@
 import { SortableContext, rectSortingStrategy, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
 import Icon from 'cozy-ui/transpiled/react/Icon'
@@ -62,9 +62,15 @@ export const FolderDialog = ({
 }: FolderDialogProps): JSX.Element => {
   const { t } = useI18n()
   const [name, setName] = useState(folder.name)
+  // Tracks the last persisted name so blur and close (which both fire when the
+  // dialog is dismissed) do not save the same rename twice.
+  const committedNameRef = useRef(folder.name)
 
   const commitRename = (): void => {
-    if (name !== folder.name) onRename(folder.id, name)
+    if (name !== committedNameRef.current) {
+      committedNameRef.current = name
+      onRename(folder.id, name)
+    }
   }
 
   // Persist a pending rename even when the dialog closes via Escape, which
