@@ -7,12 +7,14 @@ import { CSS } from '@dnd-kit/utilities'
 import cx from 'classnames'
 import React, { useRef, useState } from 'react'
 
+import {
+  Icon,
+  CrossCircleOutline as CrossCircleOutlineIcon,
+  Dots as DotsIcon,
+  Trash as TrashIcon
+} from '@linagora/twake-icons'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
-import Icon from 'cozy-ui/transpiled/react/Icon'
 import IconButton from 'cozy-ui/transpiled/react/IconButton'
-import CrossCircleOutlineIcon from 'cozy-ui/transpiled/react/Icons/CrossCircleOutline'
-import DotsIcon from 'cozy-ui/transpiled/react/Icons/Dots'
-import TrashIcon from 'cozy-ui/transpiled/react/Icons/Trash'
 import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 import { useI18n } from 'twake-i18n'
 
