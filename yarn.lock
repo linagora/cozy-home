@@ -11587,9 +11587,9 @@ nanoclone@^0.2.1:
   integrity sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA==
 
 nanoid@^5.1.6:
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.7.tgz#a9f09a4ce73ba0b88830af36ee49666bad7827b6"
-  integrity sha512-ua3NDgISf6jdwezAheMOk4mbE1LXjm1DfMUDMuJf4AqxLFK3ccGpgWizwa5YV7Yz9EpXwEaWoRXSb/BnV0t5dQ==
+  version "5.1.16"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-5.1.16.tgz#fe345c0a1f9007c32fbb5c139e1208bfd3f41ef7"
+  integrity sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==
 
 nanomatch@^1.2.9:
   version "1.2.13"
