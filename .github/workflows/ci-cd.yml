@@ -36,6 +36,7 @@ jobs:
       - name: BundleMon
         uses: lironer/bundlemon-action@v1
       - name: Set SSH for downcloud
+        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.DOWNCLOUD_SSH_KEY }}
