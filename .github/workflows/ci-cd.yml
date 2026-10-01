@@ -9,39 +9,15 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
       - '[0-9]+.[0-9]+.[0-9]+-beta.[0-9]+'
 
-env:
-  MATTERMOST_CHANNEL: '{"dev":"app---home","beta":"app---home,publication","stable":"app---home,publication"}'
-  MATTERMOST_HOOK_URL: ${{ secrets.MATTERMOST_HOOK_URL }}
-  REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+permissions:
+  contents: read
 
 jobs:
   build:
-    name: Build and publish
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Enable Corepack
-        run: corepack enable
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-      - name: Install dependencies
-        run: yarn install --immutable
-      - name: Lint
-        run: yarn lint
-      - name: Test
-        run: yarn test
-      - name: Build
-        run: yarn build
-      - name: BundleMon
-        uses: lironer/bundlemon-action@v1
-      - name: Set SSH for downcloud
-        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.DOWNCLOUD_SSH_KEY }}
-      - name: Publish
-        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
-        run: yarn run cozyPublish --yes
+    uses: linagora/twake-workflows/.github/workflows/build-and-publish-cozy-app.yml@a8c34c5fbc87363445cd1f2128b8be9000bbf49f # v1.0.0
+    with:
+      mattermost-channel: '{"dev":"app---home","beta":"app---home,publication","stable":"app---home,publication"}'
+    secrets:
+      REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+      DOWNCLOUD_SSH_KEY: ${{ secrets.DOWNCLOUD_SSH_KEY }}
+      MATTERMOST_HOOK_URL: ${{ secrets.MATTERMOST_HOOK_URL }}
