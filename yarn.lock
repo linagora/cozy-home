@@ -8829,9 +8829,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-client@npm:^60.38.0":
-  version: 60.38.0
-  resolution: "cozy-client@npm:60.38.0"
+"cozy-client@npm:^60.39.0":
+  version: 60.39.0
+  resolution: "cozy-client@npm:60.39.0"
   dependencies:
     "@cozy/minilog": "npm:1.0.0"
     "@fastify/deepmerge": "npm:^2.0.2"
@@ -8864,7 +8864,7 @@ __metadata:
     react-native-google-play-integrity: ^1.1.0
     react-native-inappbrowser-reborn: ^3.5.1
     react-native-ios11-devicecheck: ^0.0.3
-  checksum: 10c0/8405193f9819e1cc1ff7dd6581af468308808277cd01af546f649dac3ed5df959d2f8f1f1d08a401dfeed9fcdca000603c3ec0d0501d86b105e4cd639f9a4a53
+  checksum: 10c0/27045ed202c6108ae3cd20a7ccd9070fc7d9388db22343d79f8eb45ca8c1c819e5c458936ec7a48955c8d62eb439151c905a9d14ceb7261e0f3ab55032318df1
   languageName: node
   linkType: hard
 
@@ -9022,7 +9022,7 @@ __metadata:
     bundlemon: "npm:3.1.0"
     cozy-app-publish: "npm:^0.41.0"
     cozy-bar: "npm:^35.2.3"
-    cozy-client: "npm:^60.38.0"
+    cozy-client: "npm:^60.39.0"
     cozy-dataproxy-lib: "npm:^4.15.3"
     cozy-device-helper: "npm:^4.0.3"
     cozy-devtools: "npm:^3.0.0"

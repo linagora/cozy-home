@@ -37,7 +37,7 @@
     "@linagora/twake-icons": "^2.7.0",
     "@sentry/react": "7.119.0",
     "cozy-bar": "^35.2.3",
-    "cozy-client": "^60.38.0",
+    "cozy-client": "^60.39.0",
     "cozy-dataproxy-lib": "^4.15.3",
     "cozy-device-helper": "^4.0.3",
     "cozy-devtools": "^3.0.0",
