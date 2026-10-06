@@ -3050,14 +3050,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@linagora/twake-icons@npm:^2.7.0":
-  version: 2.7.0
-  resolution: "@linagora/twake-icons@npm:2.7.0"
+"@linagora/twake-icons@npm:^2.13.0":
+  version: 2.13.0
+  resolution: "@linagora/twake-icons@npm:2.13.0"
   dependencies:
     mime: "npm:4.1.0"
   peerDependencies:
-    react: ^18
-  checksum: 10c0/03fcea699a7a7f7d821ee05b5b36eac58f3e14c516891404e7f1b5a5828d2fc724253c9e2f60731748de4c7e07244dca0e9b9199031eb56d5994655d362eb295
+    react: ^18 || ^19
+  checksum: 10c0/bc68df43cf2cd31c5a8b4961f41dd4d60f985d83d6b3c0002fb49b519f511e360b8d04636ac0d8b84105738832bf1087840a70fe4d4ab960908f70259c8f54e4
   languageName: node
   linkType: hard
 
@@ -8763,17 +8763,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-bar@npm:^35.2.3":
-  version: 35.2.3
-  resolution: "cozy-bar@npm:35.2.3"
+"cozy-bar@npm:^36.1.4":
+  version: 36.1.4
+  resolution: "cozy-bar@npm:36.1.4"
   dependencies:
     classnames: "npm:^2.5.1"
-    lodash.set: "npm:^4.3.2"
     prop-types: "npm:15.7.2"
   peerDependencies:
     "@cozy/minilog": ">=1.0.0"
-    "@linagora/twake-icons": ">=2.6.6"
-    cozy-client: ">=60.21.0"
+    "@linagora/twake-icons": ">=2.10.0"
+    cozy-client: ">=60.32.0"
     cozy-dataproxy-lib: ">=4.1.0"
     cozy-device-helper: ">=2.6.0"
     cozy-flags: ">=4.6.1"
@@ -8786,7 +8785,7 @@ __metadata:
     react-dom: ^16 || ^17 || ^18
     react-router-dom: ">=6.14.2"
     twake-i18n: ">=0.3.0"
-  checksum: 10c0/445eafa34d3f9e69e013a104be595aa2f624e846aca632269d32417432dd296fc982d048c136de019ce56eb58945929befe03f2f00d13d4a8992a6c385ec4bd7
+  checksum: 10c0/b027848d2a4dbfa3d09e2ad8a13782e811c3d93052a2eb186f701b92cc8e24b53b96c6defee034149e850ab65ba21dd57419c7e3d8fbfc1e3fe379fe1ed2846f
   languageName: node
   linkType: hard
 
@@ -9006,7 +9005,7 @@ __metadata:
     "@dnd-kit/core": "npm:^6.3.1"
     "@dnd-kit/sortable": "npm:^10.0.0"
     "@dnd-kit/utilities": "npm:^3.2.2"
-    "@linagora/twake-icons": "npm:^2.7.0"
+    "@linagora/twake-icons": "npm:^2.13.0"
     "@rsbuild/core": "npm:^1.5.15"
     "@sentry/react": "npm:7.119.0"
     "@swc-contrib/mut-cjs-exports": "npm:^14.7.0"
@@ -9021,7 +9020,7 @@ __metadata:
     babel-preset-cozy-app: "npm:2.0.2"
     bundlemon: "npm:3.1.0"
     cozy-app-publish: "npm:^0.41.0"
-    cozy-bar: "npm:^35.2.3"
+    cozy-bar: "npm:^36.1.4"
     cozy-client: "npm:^60.39.0"
     cozy-dataproxy-lib: "npm:^4.15.3"
     cozy-device-helper: "npm:^4.0.3"
@@ -9036,7 +9035,7 @@ __metadata:
     cozy-minilog: "npm:^3.10.1"
     cozy-pouch-link: "npm:^60.30.6"
     cozy-realtime: "npm:^5.9.2"
-    cozy-search: "npm:^2.6.0"
+    cozy-search: "npm:^2.11.2"
     cozy-sharing: "npm:^37.2.1"
     cozy-stack-client: "npm:^60.37.0"
     cozy-tsconfig: "npm:^1.8.1"
@@ -9195,9 +9194,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-search@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "cozy-search@npm:2.6.0"
+"cozy-search@npm:^2.11.2":
+  version: 2.11.2
+  resolution: "cozy-search@npm:2.11.2"
   dependencies:
     "@assistant-ui/react": "npm:^0.12.5"
     classnames: "npm:^2.5.1"
@@ -9222,7 +9221,7 @@ __metadata:
     react-dom: ">=18.0.0"
     react-router-dom: ^6.28.0
     twake-i18n: ">=0.3.0"
-  checksum: 10c0/82dea8f328428365b5bf1a92be6744ddcf0080f10a3296cd2589e1579941cb3f2febb41552839215e0c251725e7af08f1ddcaa4459dab82e2a3eb3db172d2399
+  checksum: 10c0/7ee36c5fdfb340229cd0b0e21fe2e9ddf87782206c2d0dbfb9d146d76b8577e29b6d54276038d8ad8d14a1e83290bed25555fddb4e3244418ab7ccb0a6560417
   languageName: node
   linkType: hard
 
@@ -15515,13 +15514,6 @@ __metadata:
   version: 4.2.0
   resolution: "lodash.defaults@npm:4.2.0"
   checksum: 10c0/d5b77aeb702caa69b17be1358faece33a84497bcca814897383c58b28a2f8dfc381b1d9edbec239f8b425126a3bbe4916223da2a576bb0411c2cefd67df80707
-  languageName: node
-  linkType: hard
-
-"lodash.set@npm:^4.3.2":
-  version: 4.3.2
-  resolution: "lodash.set@npm:4.3.2"
-  checksum: 10c0/c641d31905e51df43170dce8a1d11a1cff11356e2e2e75fe2615995408e9687d58c3e1d64c3c284c2df2bc519f79a98af737d2944d382ff82ffd244ff6075c29
   languageName: node
   linkType: hard
 
