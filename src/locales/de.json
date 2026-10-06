@@ -142,7 +142,7 @@
         "syncing": "läuft…",
         "unknown": "unbekannt",
         "last_sync": "Letzte Synchronisation: **%{date}**",
-        "date_format": "LLLL D[,] yyyy [um] HH[:]mm",
+        "date_format": "D[.] MMMM yyyy [um] HH[:]mm",
         "bill": "Sie finden Ihre Daten in der Drive-App an folgendem Ort:"
       },
       "error": {
@@ -326,7 +326,7 @@
   "update": {
     "title": "Ein Update für diesen Dienst ist verfügbar.",
     "regular": "Führen Sie dieses Update durch, um Ihre Daten auch in Zukunft zu importieren und die neusten Funktionen zu haben.",
-    "blocking": "Aktualisieren Sie es, um Ihre Daten auch in Zukunft zu importieren",
+    "blocking": "Aktualisieren Sie ihn, um Ihre Daten auch in Zukunft zu importieren",
     "CTA": "Aktualisieren"
   },
   "error": {
