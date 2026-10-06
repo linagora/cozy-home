@@ -142,7 +142,7 @@
         "syncing": "in corso…",
         "unknown": "sconosciuto",
         "last_sync": "Ultima sincronizzazione: **%{date}**",
-        "date_format": "D LLLL yyyy [alle] HH[:]mm",
+        "date_format": "D MMMM yyyy [alle] HH[:]mm",
         "bill": "Trova i tuoi dati nell'app Drive in questa posizione:"
       },
       "error": {
