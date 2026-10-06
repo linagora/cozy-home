@@ -190,7 +190,13 @@ const App = () => {
                   >
                     <Route
                       path="assistant/:conversationId"
-                      element={<AssistantView />}
+                      element={
+                        <AssistantView
+                          hasCompactPrompt={flag(
+                            'cozy.assistant.compact-prompt.enabled'
+                          )}
+                        />
+                      }
                     />
                     <Route path="search" element={<SearchDialog />} />
 
