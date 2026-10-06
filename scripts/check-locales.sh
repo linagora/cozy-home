@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Locales that must have exactly the same keys as the source locale (en)
-checked_locales="fr es de it"
+checked_locales="fr es de it ru vi"
 
 en_paths=$(mktemp "/tmp/check-locales-XXX")
 locale_paths=$(mktemp "/tmp/check-locales-XXX")
