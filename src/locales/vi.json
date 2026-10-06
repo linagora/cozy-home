@@ -598,6 +598,7 @@
     "skip": "Đã hiểu"
   },
   "wallpaper": {
-    "import": "Nhập"
+    "import": "Nhập",
+    "close_dialog": "Đóng hộp thoại tùy chỉnh hình nền"
   }
 }

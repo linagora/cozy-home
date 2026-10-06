@@ -17,7 +17,6 @@
   "add_service": "Ajouter",
   "fix_konnector_error": "Corriger maintenant",
   "logout": "Déconnexion",
-  "help": "Aide",
   "account": {
     "config": {
       "default_folder": "/Administratif/%{name}",
@@ -606,6 +605,7 @@
     "skip": "J'ai compris"
   },
   "wallpaper": {
-    "import": "Importer"
+    "import": "Importer",
+    "close_dialog": "Fermer la fenêtre de personnalisation du fond d’écran"
   }
 }
