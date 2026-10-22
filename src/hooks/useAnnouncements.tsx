@@ -35,6 +35,7 @@ const useAnnouncements = ({
     const fetchAnnouncements = async (): Promise<void> => {
       setFetchStatus('loading')
       try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const resp = (await client?.stackClient.fetchJSON(
           'GET',
           `/remote/${config?.remoteDoctype}?lang=${lang}&channels=${config?.channels}`
