@@ -38,8 +38,11 @@ export const renderApp = (root?: Root): void => {
 }
 
 const App = (): JSX.Element => {
-  // eslint-disable-next-line
-  const AnimatedWrapper = require('@/components/AnimatedWrapper').default as () => JSX.Element
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const wrapperModule = require('@/components/AnimatedWrapper') as {
+    default: () => JSX.Element
+  }
+  const AnimatedWrapper = wrapperModule.default
 
   const { setBackupInfo } = useBackupData()
 
