@@ -92,7 +92,7 @@ export const useInstanceSettings = (client: CozyClient): InstanceSettings => {
         fetchedAttributes && setSettings(fetchedAttributes)
 
         setFetchStatus(FetchStatus.Loaded)
-      } catch (error) {
+      } catch {
         setFetchStatus(FetchStatus.Failed)
       }
     }

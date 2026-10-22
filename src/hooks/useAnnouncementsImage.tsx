@@ -27,7 +27,7 @@ const useAnnouncementsImage = (url: string | undefined): string | null => {
         )) as Response
         const blob = await fetchBinary.blob()
         setImage(URL.createObjectURL(blob))
-      } catch (error) {
+      } catch {
         setImage(null)
       }
     }

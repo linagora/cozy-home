@@ -49,7 +49,7 @@ const useAnnouncements = ({
 
         setRawData(resp.data)
         setFetchStatus('loaded')
-      } catch (error) {
+      } catch {
         setFetchStatus('error')
       }
     }
