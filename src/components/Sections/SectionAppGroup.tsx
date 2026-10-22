@@ -21,8 +21,6 @@ interface SectionAppTileProps {
   }
 }
 
-const typedNameToColor = nameToColor as (name: string) => string
-
 const SectionAppTile = ({ item }: SectionAppTileProps): JSX.Element => {
   const shortcutImgSrc = file.getShortcutImgSrc(item as IOCozyFile)
 
@@ -45,7 +43,7 @@ const SectionAppTile = ({ item }: SectionAppTileProps): JSX.Element => {
         />
       ) : (
         <div
-          style={{ backgroundColor: typedNameToColor(item.name) }}
+          style={{ backgroundColor: nameToColor(item.name) }}
           className="section-app-group-tile"
         >
           <Typography variant="subtitle2" align="center">
