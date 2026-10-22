@@ -38,7 +38,7 @@ interface InstanceSettings {
 const shouldSetLocal = (instanceSettings: QueryState): boolean =>
   Boolean(
     instanceSettings &&
-      (instanceSettings.fetchStatus === FetchStatus.Loaded ||
+      (instanceSettings.fetchStatus === 'loaded' ||
         instanceSettings.lastFetch)
   )
 
