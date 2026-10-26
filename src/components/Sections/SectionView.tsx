@@ -10,7 +10,10 @@ import AddServiceTile from '@/components/AddServiceTile'
 import KonnectorTile from '@/components/KonnectorTile'
 import { SectionHeader } from '@/components/Sections/SectionHeader'
 import { ShortcutLink } from '@/components/ShortcutLink'
-import { computeDisplayMode, computeGroupMode } from '@/components/Sections/utils'
+import {
+  computeDisplayMode,
+  computeGroupMode
+} from '@/components/Sections/utils'
 import {
   DisplayMode,
   GroupMode,

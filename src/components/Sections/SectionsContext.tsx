@@ -102,8 +102,9 @@ export const SectionsProvider = ({
     [konnectors]
   )
 
-  const [groupedData, setGroupedData] =
-    useState<{ [key: string]: IOCozyKonnector[] }>()
+  const [groupedData, setGroupedData] = useState<{
+    [key: string]: IOCozyKonnector[]
+  }>()
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {

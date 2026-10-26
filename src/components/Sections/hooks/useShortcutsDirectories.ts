@@ -1,5 +1,8 @@
 import { useQuery } from 'cozy-client'
-import { mkHomeCustomShorcutsDirConn, mkHomeCustomShorcutsConn } from '@/queries'
+import {
+  mkHomeCustomShorcutsDirConn,
+  mkHomeCustomShorcutsConn
+} from '@/queries'
 import { formatShortcuts } from '@/components/Shortcuts/utils'
 import { Section } from '@/components/Sections/SectionsTypes'
 
