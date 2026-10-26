@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+
 import { useClient } from 'cozy-client'
-import { AnnouncementsConfig } from '@/components/Announcements/types'
 import flag from 'cozy-flags'
+
+import { AnnouncementsConfig } from '@/components/Announcements/types'
 
 /**
  * An hook to fetch an image from the announcements remote doctype.

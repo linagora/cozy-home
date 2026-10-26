@@ -1,10 +1,11 @@
 import { useQuery } from 'cozy-client'
+
+import { Section } from '@/components/Sections/SectionsTypes'
+import { formatShortcuts } from '@/components/Shortcuts/utils'
 import {
   mkHomeCustomShorcutsDirConn,
   mkHomeCustomShorcutsConn
 } from '@/queries'
-import { formatShortcuts } from '@/components/Shortcuts/utils'
-import { Section } from '@/components/Sections/SectionsTypes'
 
 export const useShortcutsDirectories = (
   magicHomeFolderId?: string
