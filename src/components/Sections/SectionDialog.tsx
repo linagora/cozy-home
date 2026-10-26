@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 import { Dialog } from 'cozy-ui/transpiled/react/CozyDialogs'
+import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 
-import { SectionBody } from '@/components/Sections/SectionView'
 import { SectionHeader } from '@/components/Sections/SectionHeader'
+import { SectionBody } from '@/components/Sections/SectionView'
 import { useSections } from '@/components/Sections/SectionsContext'
 
 const SectionDialog = (): JSX.Element | null => {

@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react'
 
-import { useI18n } from 'twake-i18n'
-import flag from 'cozy-flags'
 import { useClient } from 'cozy-client'
+import flag from 'cozy-flags'
+import { useI18n } from 'twake-i18n'
 
-import {
-  Announcement,
-  AnnouncementsConfigFlag
-} from '@/components/Announcements/types'
+import { useAnnouncementsSettings } from './useAnnouncementsSettings'
+
 import {
   getUnseenAnnouncements,
   isAnnouncement
 } from '@/components/Announcements/helpers'
-import { useAnnouncementsSettings } from './useAnnouncementsSettings'
+import {
+  Announcement,
+  AnnouncementsConfigFlag
+} from '@/components/Announcements/types'
 
 interface UseAnnouncementsProps {
   canBeDisplayed: boolean

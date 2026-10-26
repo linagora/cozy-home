@@ -1,12 +1,13 @@
-import React from 'react'
 import cx from 'classnames'
+import React from 'react'
 
-import type { IOCozyFile, IOCozyKonnector } from 'cozy-client/types/types'
 import { models } from 'cozy-client'
+import type { IOCozyFile, IOCozyKonnector } from 'cozy-client/types/types'
 import { nameToColor } from 'cozy-ui/react/Avatar/helpers'
-import Typography from 'cozy-ui/transpiled/react/Typography'
 import Grid from 'cozy-ui/transpiled/react/Grid'
+import Typography from 'cozy-ui/transpiled/react/Typography'
 import AppIcon from 'cozy-ui-plus/dist/AppIcon'
+
 import { STATUS } from '@/components/KonnectorHelpers'
 
 const { file } = models
