@@ -20,8 +20,8 @@ const SectionDialog = (): JSX.Element | null => {
     type === 'konnectors'
       ? konnectorsByCategory?.find(section => section.id === category)
       : type === 'shortcuts'
-      ? groupedSections?.find(section => section.id === category)
-      : null
+        ? groupedSections?.find(section => section.id === category)
+        : null
 
   // Using relative path avoids an issue within React-Native
   // Where an Android back button press would trigger unexpected behavior from the Webview browser
