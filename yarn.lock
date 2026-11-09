@@ -9135,7 +9135,7 @@ __metadata:
     cozy-tsconfig: "npm:^1.8.1"
     cozy-ui: "npm:^142.3.0"
     cozy-ui-plus: "npm:^15.0.1"
-    cozy-viewer: "npm:^31.1.4"
+    cozy-viewer: "npm:^33.0.1"
     date-fns: "npm:2.30.0"
     es-abstract: "npm:1.20.2"
     form-data: "npm:2.5.1"
@@ -9445,9 +9445,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cozy-viewer@npm:^31.1.4":
-  version: 31.1.4
-  resolution: "cozy-viewer@npm:31.1.4"
+"cozy-viewer@npm:^33.0.1":
+  version: 33.0.1
+  resolution: "cozy-viewer@npm:33.0.1"
   dependencies:
     classnames: "npm:^2.5.1"
     hammerjs: "npm:^2.0.8"
@@ -9468,7 +9468,7 @@ __metadata:
     react-dom: ">=16.14.0"
     react-router-dom: ">=6.14.2"
     twake-i18n: ">=0.3.0"
-  checksum: 10c0/faec737ae29a5dbec20b7c38640ef9054ba1587a4037462551639e7700ec37867bb90c66cd32e0f1cc75f76830f067d29a67e707f12fad95af5bcde868af44c1
+  checksum: 10c0/4d3f638397a0243bc98be59dfa4471f14da185b73b9769fa8e13030ed062f757105f48a0082e32ad3da021a97dcf4214a64c2039e1914b6cb86640a8c4f54c1c
   languageName: node
   linkType: hard
 

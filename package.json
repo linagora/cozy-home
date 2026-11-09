@@ -59,7 +59,7 @@
     "cozy-tsconfig": "^1.8.1",
     "cozy-ui": "^142.3.0",
     "cozy-ui-plus": "^15.0.1",
-    "cozy-viewer": "^31.1.4",
+    "cozy-viewer": "^33.0.1",
     "date-fns": "2.30.0",
     "es-abstract": "1.20.2",
     "form-data": "2.5.1",
