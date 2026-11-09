@@ -42,7 +42,7 @@
     "cozy-client": "^60.40.0",
     "cozy-dataproxy-lib": "^4.15.3",
     "cozy-device-helper": "^4.0.3",
-    "cozy-devtools": "^3.0.0",
+    "cozy-devtools": "^4.0.0",
     "cozy-doctypes": "^1.99.1",
     "cozy-flags": "^4.9.1",
     "cozy-harvest-lib": "^39.2.4",
