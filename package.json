@@ -58,7 +58,7 @@
     "cozy-stack-client": "^60.37.0",
     "cozy-tsconfig": "^1.8.1",
     "cozy-ui": "^142.3.0",
-    "cozy-ui-plus": "^14.0.1",
+    "cozy-ui-plus": "^15.0.1",
     "cozy-viewer": "^31.1.4",
     "date-fns": "2.30.0",
     "es-abstract": "1.20.2",
