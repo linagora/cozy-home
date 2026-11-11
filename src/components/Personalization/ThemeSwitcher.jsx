@@ -56,7 +56,7 @@ export const ThemeSwitcher = () => {
             key={option.value}
             label={<Icon icon={option.icon} />}
             id={option.value}
-            arial-label={`${option.value} theme`}
+            aria-label={`${option.value} theme`}
           />
         ))}
       </Tabs>
