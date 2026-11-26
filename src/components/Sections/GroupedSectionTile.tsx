@@ -7,6 +7,7 @@ import { useI18n } from 'twake-i18n'
 import SectionAppGroup from '@/components/Sections/SectionAppGroup'
 import { GroupedSectionTileProps } from '@/components/Sections/SectionsTypes'
 import { get4FirstItems } from '@/components/Sections/utils'
+import TileButton from '@/components/TileButton'
 
 const GroupedSectionTile = ({
   section
@@ -26,7 +27,7 @@ const GroupedSectionTile = ({
   if (section.items.length === 0) return null
 
   return (
-    <a
+    <TileButton
       key={section.id}
       onClick={(): void =>
         handleNavigation(
@@ -34,7 +35,6 @@ const GroupedSectionTile = ({
           section.type === 'category' ? 'konnectors' : 'shortcuts'
         )
       }
-      className="scale-hover u-c-pointer"
     >
       <SquareAppIcon
         name={
@@ -49,7 +49,7 @@ const GroupedSectionTile = ({
           justifyContent: 'flex-start'
         }}
       />
-    </a>
+    </TileButton>
   )
 }
 

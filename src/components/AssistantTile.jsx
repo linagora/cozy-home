@@ -4,6 +4,8 @@ import { Icon, Assistant } from '@linagora/twake-icons'
 import { AssistantLink } from 'cozy-search'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 
+import TileButton from '@/components/TileButton'
+
 /**
  * AssistantTile component.
  *
@@ -13,14 +15,14 @@ const AssistantTile = () => {
   return (
     <AssistantLink>
       {({ openAssistant }) => (
-        <a onClick={openAssistant} className="scale-hover">
+        <TileButton onClick={openAssistant}>
           <SquareAppIcon
             name="Assistant"
             IconContent={
               <Icon icon={Assistant} size={24} color="var(--primaryColor)" />
             }
           />
-        </a>
+        </TileButton>
       )}
     </AssistantLink>
   )

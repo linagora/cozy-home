@@ -7,6 +7,7 @@ import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 import { useI18n } from 'twake-i18n'
 
 import ShortcutCreateModal from './Shortcuts/ShortcutCreateModal'
+import TileButton from './TileButton'
 
 import styles from '@/styles/lists.styl'
 
@@ -16,12 +17,9 @@ const ShortcutAddTile = () => {
 
   return (
     <>
-      <a
-        onClick={() => setIsCreateModalOpen(true)}
-        className={styles['scale-hover']}
-      >
+      <TileButton onClick={() => setIsCreateModalOpen(true)}>
         <SquareAppIcon name={t('add_service')} variant="add" />
-      </a>
+      </TileButton>
       {isCreateModalOpen && (
         <ShortcutCreateModal onClose={() => setIsCreateModalOpen(false)} />
       )}

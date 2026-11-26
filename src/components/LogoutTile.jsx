@@ -8,6 +8,8 @@ import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 import { useI18n } from 'twake-i18n'
 
+import TileButton from '@/components/TileButton'
+
 const LogoutTile = () => {
   const { t } = useI18n()
   const client = useClient()
@@ -24,12 +26,12 @@ const LogoutTile = () => {
   const { isMobile } = useBreakpoints()
 
   return (
-    <div onClick={logout} className="scale-hover u-c-pointer">
+    <TileButton onClick={logout}>
       <SquareAppIcon
         name={t('logout')}
         IconContent={<Icon icon={LogoutLarge} size={isMobile ? 24 : 32} />}
       />
-    </div>
+    </TileButton>
   )
 }
 

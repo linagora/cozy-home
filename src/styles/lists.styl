@@ -127,6 +127,25 @@ div[class*='SquareAppIcon-icon-container'] .section-app-group
 .scale-hover:hover
     transform scale(1.0625)
 
+// Native button for the tiles that run an action (no link): fills its grid
+// cell like the anchors of the other tiles, without the button look.
+.tile-button
+    display block
+    width 100%
+    margin 0
+    padding 0
+    border 0
+    background transparent
+    color inherit
+    font inherit
+    text-align inherit
+    cursor pointer
+
+    &:focus-visible
+        outline 2px solid var(--primaryColor)
+        outline-offset 2px
+        border-radius 1rem
+
 .section-app-group-grid
     display flex
     align-items center
