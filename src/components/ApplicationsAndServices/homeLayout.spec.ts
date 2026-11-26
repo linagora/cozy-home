@@ -30,6 +30,26 @@ describe('buildAppItems', () => {
     expect(buildAppItems(null, noFilters)).toEqual([])
   })
 
+  it('orders the apps by slug, whatever the order of the data', () => {
+    // An app installed while Home is open is appended to the query by
+    // realtime, whereas a page load lists the apps by id (slug)
+    const items = buildAppItems(
+      [
+        makeApp('drive'),
+        makeApp('settings'),
+        makeApp('store'),
+        makeApp('notes')
+      ],
+      noFilters
+    )
+    expect(items.map(i => i.id)).toEqual([
+      'app:drive',
+      'app:notes',
+      'app:settings',
+      'app:store'
+    ])
+  })
+
   it('filters hidden/home-hidden/hidden-state/home and dedups, then ids', () => {
     const items = buildAppItems(
       [

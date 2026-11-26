@@ -10,6 +10,7 @@ import { useI18n } from 'twake-i18n'
 
 import AppHighlightAlertWrapper from '@/components/AppHighlightAlert/AppHighlightAlertWrapper'
 import AppTile from '@/components/AppTile'
+import { sortAppsBySlug } from '@/components/ApplicationsAndServices/homeLayout'
 import LoadingPlaceholder from '@/components/LoadingPlaceholder'
 import LogoutTile from '@/components/LogoutTile'
 import ShortcutLink from '@/components/ShortcutLink'
@@ -55,7 +56,7 @@ const getApplicationsList = data => {
         !hiddenApps.includes(app.slug.toLowerCase()) &&
         !hiddenHomeApps.includes(app.slug.toLowerCase())
     )
-    const dedupapps = uniqBy(apps, 'slug')
+    const dedupapps = sortAppsBySlug(uniqBy(apps, 'slug'))
 
     const sortedApps = flag('apps.sort')
       ? sortApplicationsList(dedupapps, flag('apps.sort'))

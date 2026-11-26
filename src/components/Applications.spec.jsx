@@ -148,4 +148,31 @@ describe('Applications', () => {
     expect(root.queryByText('Lina')).toBeNull()
     expect(root.getByText('toto')).toBeTruthy()
   })
+
+  it('orders the apps by slug, so that a newly installed app keeps its place', () => {
+    const app = slug => ({
+      _id: `io.cozy.apps/${slug}`,
+      id: `io.cozy.apps/${slug}`,
+      slug,
+      name: slug.toUpperCase(),
+      state: 'ready',
+      links: { related: `http://${slug}.cozy.localhost` }
+    })
+    const { root } = setup({
+      queries: {
+        'io.cozy.apps': {
+          lastUpdate: new Date(),
+          // notes was installed while Home was open: realtime appended it
+          data: [app('drive'), app('settings'), app('store'), app('notes')],
+          doctype: 'io.cozy.apps',
+          hasMore: false
+        }
+      }
+    })
+    const names = root
+      .getAllByRole('heading', { level: 6 })
+      .map(heading => heading.textContent)
+      .filter(name => name !== 'Log out')
+    expect(names).toEqual(['DRIVE', 'NOTES', 'SETTINGS', 'STORE'])
+  })
 })

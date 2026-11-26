@@ -55,6 +55,13 @@ export const makeFolderId = (): string =>
   `${FOLDER_PREFIX}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`
 export const isFolderId = (id: string): boolean => id.startsWith(FOLDER_PREFIX)
 
+// The stack lists the apps in the order of their ids (io.cozy.apps/<slug>),
+// whereas an app installed while Home is open is added at the end by
+// realtime: sort by slug so that a new tile is placed where it will be after
+// a reload. Plain comparison, like CouchDB's order of ids.
+export const sortAppsBySlug = <T extends { slug: string }>(apps: T[]): T[] =>
+  [...apps].sort((a, b) => (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0))
+
 export const buildAppItems = (
   apps: IOCozyApp[] | null | undefined,
   { sortSlugs, hiddenSlugs, hiddenHomeSlugs }: AppFilters
@@ -73,8 +80,9 @@ export const buildAppItems = (
     seenSlugs.add(app.slug)
     return true
   })
+  const bySlug = sortAppsBySlug(deduped)
   const sorted = (
-    sortSlugs ? sortApplicationsList(deduped, sortSlugs) : deduped
+    sortSlugs ? sortApplicationsList(bySlug, sortSlugs) : bySlug
   ) as IOCozyApp[]
   return sorted.map(app => ({ type: 'app', id: makeAppId(app.slug), app }))
 }
