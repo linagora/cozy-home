@@ -612,6 +612,11 @@
       "light": "Helles Design",
       "dark": "Dunkles Design",
       "auto": "Systemdesign"
-    }
+    },
+    "open_dialog": "Personalisieren",
+    "dialog_title": "Personalisierung",
+    "remove_custom": "Importiertes Hintergrundbild entfernen",
+    "invalid_image": "Diese Datei kann nicht als Hintergrundbild verwendet werden. Wählen Sie ein JPEG-, PNG-, WebP- oder GIF-Bild.",
+    "import_error": "Das Hintergrundbild konnte nicht importiert werden. Bitte versuchen Sie es erneut."
   }
 }

@@ -612,6 +612,11 @@
       "light": "Thème clair",
       "dark": "Thème sombre",
       "auto": "Thème du système"
-    }
+    },
+    "open_dialog": "Personnaliser",
+    "dialog_title": "Personnalisation",
+    "remove_custom": "Supprimer le fond d’écran importé",
+    "invalid_image": "Ce fichier ne peut pas être utilisé comme fond d’écran. Choisissez une image JPEG, PNG, WebP ou GIF.",
+    "import_error": "Le fond d’écran n’a pas pu être importé. Veuillez réessayer."
   }
 }

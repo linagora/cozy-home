@@ -2,6 +2,7 @@ import localForage from 'localforage'
 import { useEffect, useRef, useState } from 'react'
 
 import { useClient } from 'cozy-client'
+import log from 'cozy-logger'
 
 import homeConfig from '@/config/home.json'
 
@@ -108,6 +109,8 @@ const useBinaryWallpaper = () => {
    * @async
    * @param {File} file - The wallpaper file to upload and save.
    * @returns {Promise<void>}
+   * @throws {Error} When the wallpaper could not be uploaded, so that the
+   * caller can tell the user.
    */
   const saveCustomWallpaper = async file => {
     try {
@@ -129,10 +132,12 @@ const useBinaryWallpaper = () => {
         dirId,
         name: 'Wallpaper'
       })
-      await fetchAndCache()
-    } catch (_) {
-      // If the fetch failed user just won't see the new background file
+    } catch (error) {
+      log('error', `Could not save the custom wallpaper: ${error}`)
+      throw error
     }
+    // If the fetch fails, the user just won't see the new background file
+    await fetchAndCache()
   }
 
   /**
@@ -170,14 +175,18 @@ const useBinaryWallpaper = () => {
 
   useEffect(() => {
     let mounted = true
-    ;(async () => {
+    const hydrate = async () => {
       // Try to hydrate from cache first to avoid flashes
       const hydrated = await loadFromCache()
       if (!mounted) return
       if (!hydrated) {
         await fetchAndCache()
       }
-    })()
+    }
+    hydrate().catch(error => {
+      log('error', `Could not load the custom wallpaper: ${error}`)
+      if (mounted) setStatus('failed')
+    })
 
     return () => {
       mounted = false

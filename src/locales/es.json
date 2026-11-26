@@ -612,6 +612,11 @@
       "light": "Tema claro",
       "dark": "Tema oscuro",
       "auto": "Tema del sistema"
-    }
+    },
+    "open_dialog": "Personalizar",
+    "dialog_title": "Personalización",
+    "remove_custom": "Eliminar el fondo de pantalla importado",
+    "invalid_image": "Este archivo no se puede usar como fondo de pantalla. Elija una imagen JPEG, PNG, WebP o GIF.",
+    "import_error": "No se pudo importar el fondo de pantalla. Inténtelo de nuevo."
   }
 }

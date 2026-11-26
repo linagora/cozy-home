@@ -612,6 +612,11 @@
       "light": "Tema chiaro",
       "dark": "Tema scuro",
       "auto": "Tema di sistema"
-    }
+    },
+    "open_dialog": "Personalizza",
+    "dialog_title": "Personalizzazione",
+    "remove_custom": "Rimuovi lo sfondo importato",
+    "invalid_image": "Questo file non può essere usato come sfondo. Scegli un’immagine JPEG, PNG, WebP o GIF.",
+    "import_error": "Impossibile importare lo sfondo. Riprova."
   }
 }

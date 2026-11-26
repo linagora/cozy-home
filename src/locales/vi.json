@@ -612,6 +612,11 @@
       "light": "Giao diện sáng",
       "dark": "Giao diện tối",
       "auto": "Giao diện hệ thống"
-    }
+    },
+    "open_dialog": "Cá nhân hóa",
+    "dialog_title": "Cá nhân hóa",
+    "remove_custom": "Xóa hình nền đã nhập",
+    "invalid_image": "Không thể dùng tệp này làm hình nền. Hãy chọn ảnh JPEG, PNG, WebP hoặc GIF.",
+    "import_error": "Không thể nhập hình nền. Vui lòng thử lại."
   }
 }

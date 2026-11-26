@@ -46,9 +46,19 @@ export const getWallpaperLabel = (wallpaper, t) => {
  *
  * @param {string} wallpaperLink - The wallpaper link.
  * @param {Array} wallpapers - The wallpapers array.
+ * @param {boolean} [hasCustomWallpaper] - Whether an imported image is the wallpaper.
  * @returns {string} The current wallpaper key.
  */
-export const getCurrentWallpaperKey = (wallpaperLink, wallpapers) => {
+export const getCurrentWallpaperKey = (
+  wallpaperLink,
+  wallpapers,
+  hasCustomWallpaper = false
+) => {
+  // An imported image is stored as a file, not as a link
+  if (hasCustomWallpaper) {
+    return 'bg_custom'
+  }
+
   if (!wallpaperLink) {
     return 'bg_twp_default'
   }
@@ -58,3 +68,25 @@ export const getCurrentWallpaperKey = (wallpaperLink, wallpapers) => {
 
   return wallpaper ? wallpaper.key : 'bg_custom'
 }
+
+/**
+ * Checks that a file can be decoded as an image by the browser.
+ *
+ * The type of a File is derived from its extension, not from its content:
+ * a text file named "fake.png" has the type "image/png".
+ *
+ * @param {Blob} file - The file to check.
+ * @returns {Promise<boolean>} Whether the file is a decodable image.
+ */
+export const isDecodableImage = file =>
+  new Promise(resolve => {
+    const url = URL.createObjectURL(file)
+    const img = new Image()
+    const done = result => {
+      URL.revokeObjectURL(url)
+      resolve(result)
+    }
+    img.onload = () => done(true)
+    img.onerror = () => done(false)
+    img.src = url
+  })

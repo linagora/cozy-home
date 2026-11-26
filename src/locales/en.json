@@ -612,6 +612,11 @@
       "light": "Light theme",
       "dark": "Dark theme",
       "auto": "System theme"
-    }
+    },
+    "open_dialog": "Personalize",
+    "dialog_title": "Personalization",
+    "remove_custom": "Remove the imported wallpaper",
+    "invalid_image": "This file cannot be used as a wallpaper. Choose a JPEG, PNG, WebP or GIF image.",
+    "import_error": "The wallpaper could not be imported. Please try again."
   }
 }
