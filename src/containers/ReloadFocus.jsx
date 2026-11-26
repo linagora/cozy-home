@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
 import { useClient } from 'cozy-client'
+import log from 'cozy-logger'
 
 import {
   makeTriggersWithJobStatusQuery,
@@ -10,6 +11,21 @@ import {
 
 const ReloadFocus = () => {
   const client = useClient()
+
+  useEffect(() => {
+    // The initial triggers query (makeTriggersQuery) is fast, but it reads
+    // the raw documents, without the current_state that the stack computes.
+    // The konnector tiles need it to show their error state: load it once
+    // after the first render, not only when the window gets the focus.
+    client
+      .query(
+        makeTriggersWithJobStatusQuery.definition(),
+        makeTriggersWithJobStatusQuery.options
+      )
+      .catch(error => {
+        log('error', `Could not load the state of the triggers: ${error}`)
+      })
+  }, [client])
 
   useEffect(() => {
     const handleFocus = () => {
