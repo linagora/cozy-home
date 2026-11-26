@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Modifica collegamento",
-    "delete": "Elimina"
+    "delete": "Elimina",
+    "actions": "Azioni del collegamento"
   },
   "folder": {
     "default_name": "Cartella",

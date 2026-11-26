@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Verknüpfung bearbeiten",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "actions": "Verknüpfungsaktionen"
   },
   "folder": {
     "default_name": "Ordner",

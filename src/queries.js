@@ -96,6 +96,25 @@ export const mkHomeMagicFolderConn = () => {
     fetchPolicy: defaultFetchPolicy
   }
 }
+// Shortcuts stored at the root of the /Settings/Home magic folder. A real
+// query (unlike cozy-client's useFetchHomeShortcuts) so that realtime and
+// mutations keep the tiles up to date.
+export const mkHomeShortcutsConn = magicFolderId => ({
+  query: Q('io.cozy.files')
+    .where({
+      dir_id: magicFolderId,
+      class: 'shortcut',
+      name: { $gt: null }
+    })
+    .indexFields(['dir_id', 'class', 'name'])
+    .sortBy([{ dir_id: 'asc' }, { class: 'asc' }, { name: 'asc' }])
+    .limitBy(1000),
+  options: {
+    as: `home/io.cozy.files/shortcuts/dir_id=${magicFolderId}`,
+    fetchPolicy: defaultFetchPolicy
+  }
+})
+
 export const fetchKonnectorBySlug = slug => {
   return {
     query: Q('io.cozy.konnectors').getById(`io.cozy.konnectors/${slug}`),

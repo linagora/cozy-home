@@ -20,7 +20,7 @@ exports[`Shortcuts Should display a shortcut directory with its files 1`] = `
             class="shortcuts-list shortcuts-list--gutter u-w-100 u-mh-auto u-mv-3 u-mv-2-t u-flex-justify-center"
           >
             <span
-              class="MuiBadge-root"
+              class="MuiBadge-root shortcut-badge--compact"
             >
               <a
                 class="MuiTypography-root MuiLink-root MuiLink-underlineNone scale-hover MuiTypography-colorPrimary"
@@ -79,6 +79,9 @@ exports[`Shortcuts Should display a shortcut directory with its files 1`] = `
                 class="MuiBadge-badge badgeSizeLarge MuiBadge-anchorOriginTopRightRectangular"
               >
                 <button
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  aria-label="Shortcut actions"
                   class="MuiButtonBase-root MuiIconButton-root shortcut-actions-menu small"
                   tabindex="0"
                   type="button"
@@ -224,7 +227,7 @@ exports[`Shortcuts Should display a shortcut directory with its files 1`] = `
           class="shortcuts-list shortcuts-list--gutter u-w-100 u-mh-auto u-mv-3 u-mv-2-t u-flex-justify-center"
         >
           <span
-            class="MuiBadge-root"
+            class="MuiBadge-root shortcut-badge--compact"
           >
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineNone scale-hover MuiTypography-colorPrimary"
@@ -283,6 +286,9 @@ exports[`Shortcuts Should display a shortcut directory with its files 1`] = `
               class="MuiBadge-badge badgeSizeLarge MuiBadge-anchorOriginTopRightRectangular"
             >
               <button
+                aria-expanded="false"
+                aria-haspopup="menu"
+                aria-label="Shortcut actions"
                 class="MuiButtonBase-root MuiIconButton-root shortcut-actions-menu small"
                 tabindex="0"
                 type="button"
@@ -390,7 +396,7 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
             class="shortcuts-list shortcuts-list--gutter u-w-100 u-mh-auto u-mv-3 u-mv-2-t u-flex-justify-center"
           >
             <span
-              class="MuiBadge-root"
+              class="MuiBadge-root shortcut-badge--compact"
             >
               <a
                 class="MuiTypography-root MuiLink-root MuiLink-underlineNone scale-hover MuiTypography-colorPrimary"
@@ -449,6 +455,9 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
                 class="MuiBadge-badge badgeSizeLarge MuiBadge-anchorOriginTopRightRectangular"
               >
                 <button
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  aria-label="Shortcut actions"
                   class="MuiButtonBase-root MuiIconButton-root shortcut-actions-menu small"
                   tabindex="0"
                   type="button"
@@ -492,7 +501,7 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
             class="shortcuts-list shortcuts-list--gutter u-w-100 u-mh-auto u-mv-3 u-mv-2-t u-flex-justify-center"
           >
             <span
-              class="MuiBadge-root"
+              class="MuiBadge-root shortcut-badge--compact"
             >
               <a
                 class="MuiTypography-root MuiLink-root MuiLink-underlineNone scale-hover MuiTypography-colorPrimary"
@@ -551,6 +560,9 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
                 class="MuiBadge-badge badgeSizeLarge MuiBadge-anchorOriginTopRightRectangular"
               >
                 <button
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  aria-label="Shortcut actions"
                   class="MuiButtonBase-root MuiIconButton-root shortcut-actions-menu small"
                   tabindex="0"
                   type="button"
@@ -791,7 +803,7 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
           class="shortcuts-list shortcuts-list--gutter u-w-100 u-mh-auto u-mv-3 u-mv-2-t u-flex-justify-center"
         >
           <span
-            class="MuiBadge-root"
+            class="MuiBadge-root shortcut-badge--compact"
           >
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineNone scale-hover MuiTypography-colorPrimary"
@@ -850,6 +862,9 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
               class="MuiBadge-badge badgeSizeLarge MuiBadge-anchorOriginTopRightRectangular"
             >
               <button
+                aria-expanded="false"
+                aria-haspopup="menu"
+                aria-label="Shortcut actions"
                 class="MuiButtonBase-root MuiIconButton-root shortcut-actions-menu small"
                 tabindex="0"
                 type="button"
@@ -893,7 +908,7 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
           class="shortcuts-list shortcuts-list--gutter u-w-100 u-mh-auto u-mv-3 u-mv-2-t u-flex-justify-center"
         >
           <span
-            class="MuiBadge-root"
+            class="MuiBadge-root shortcut-badge--compact"
           >
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineNone scale-hover MuiTypography-colorPrimary"
@@ -952,6 +967,9 @@ exports[`Shortcuts Should display multiple sections for multiple directories 1`]
               class="MuiBadge-badge badgeSizeLarge MuiBadge-anchorOriginTopRightRectangular"
             >
               <button
+                aria-expanded="false"
+                aria-haspopup="menu"
+                aria-label="Shortcut actions"
                 class="MuiButtonBase-root MuiIconButton-root shortcut-actions-menu small"
                 tabindex="0"
                 type="button"

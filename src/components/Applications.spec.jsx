@@ -2,6 +2,7 @@ import { render, act } from '@testing-library/react'
 import React from 'react'
 
 import { createMockClient } from 'cozy-client/dist/mock'
+import { dispatchCreate, dispatchDelete } from 'cozy-client/dist/store/realtime'
 import flag from 'cozy-flags'
 import CozyTheme from 'cozy-ui-plus/dist/providers/CozyTheme'
 
@@ -15,23 +16,34 @@ jest.mock('cozy-flags', () => {
 
 const setup = ({ queries, shortcuts } = {}) => {
   const client = createMockClient({
-    queries: queries || {
-      'io.cozy.apps': {
-        lastUpdate: new Date(),
-        data: [],
-        doctype: 'io.cozy.apps',
-        hasMore: false
-      }
+    queries: {
+      ...(queries || {
+        'io.cozy.apps': {
+          lastUpdate: new Date(),
+          data: [],
+          doctype: 'io.cozy.apps',
+          hasMore: false
+        }
+      }),
+      ...(shortcuts
+        ? {
+            // The shortcuts are the files of the /Settings/Home folder
+            'home/io.cozy.files/path=magic-folder': {
+              lastUpdate: new Date(),
+              data: [{ _id: 'magic-folder-id', path: '/Settings/Home' }],
+              doctype: 'io.cozy.files',
+              hasMore: false
+            },
+            'home/io.cozy.files/shortcuts/dir_id=magic-folder-id': {
+              lastUpdate: new Date(),
+              data: shortcuts,
+              doctype: 'io.cozy.files',
+              hasMore: false
+            }
+          }
+        : {})
     }
   })
-
-  if (shortcuts) {
-    // useFetchHomeShortcuts reads the shortcuts from the included files
-    // of the /Settings/Home folder.
-    client.collection = jest.fn().mockReturnValue({
-      statByPath: jest.fn().mockResolvedValue({ included: shortcuts })
-    })
-  }
 
   const root = render(
     <AppLike client={client} store={client.store}>
@@ -40,7 +52,7 @@ const setup = ({ queries, shortcuts } = {}) => {
       </CozyTheme>
     </AppLike>
   )
-  return { root }
+  return { root, client }
 }
 
 describe('Applications', () => {
@@ -60,8 +72,18 @@ describe('Applications', () => {
 
   it('displays retrieved shortcuts', async () => {
     const shortcuts = [
-      { id: '1', name: 'toto.txt', class: 'shortcut' },
-      { id: '2', name: 'tata.txt', class: 'shortcut' }
+      {
+        _id: '1',
+        name: 'toto.txt',
+        class: 'shortcut',
+        dir_id: 'magic-folder-id'
+      },
+      {
+        _id: '2',
+        name: 'tata.txt',
+        class: 'shortcut',
+        dir_id: 'magic-folder-id'
+      }
     ]
     const { root } = setup({
       shortcuts,
@@ -80,5 +102,50 @@ describe('Applications', () => {
     await act(async () => {})
     expect(root.getByText('toto.txt')).toBeTruthy()
     expect(root.getByText('tata.txt')).toBeTruthy()
+  })
+
+  it('shows created and deleted shortcuts without a reload', async () => {
+    const shortcuts = [
+      {
+        _id: '1',
+        _type: 'io.cozy.files',
+        type: 'file',
+        name: 'toto.url',
+        class: 'shortcut',
+        dir_id: 'magic-folder-id'
+      }
+    ]
+    const { root, client } = setup({ shortcuts })
+    await act(async () => {})
+    expect(root.getByText('toto')).toBeTruthy()
+    expect(root.queryByText('Lina')).toBeNull()
+
+    // A shortcut is created (realtime event on io.cozy.files)
+    await act(async () => {
+      await dispatchCreate(client, 'io.cozy.files', {
+        _id: '2',
+        _rev: '1-a',
+        type: 'file',
+        name: 'Lina.url',
+        class: 'shortcut',
+        dir_id: 'magic-folder-id'
+      })
+    })
+    expect(root.getByText('Lina')).toBeTruthy()
+
+    // It is deleted
+    await act(async () => {
+      await dispatchDelete(client, 'io.cozy.files', {
+        _id: '2',
+        _rev: '2-b',
+        type: 'file',
+        name: 'Lina.url',
+        class: 'shortcut',
+        dir_id: 'magic-folder-id',
+        _deleted: true
+      })
+    })
+    expect(root.queryByText('Lina')).toBeNull()
+    expect(root.getByText('toto')).toBeTruthy()
   })
 })

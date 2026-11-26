@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Изменить ярлык",
-    "delete": "Удалить"
+    "delete": "Удалить",
+    "actions": "Действия с ярлыком"
   },
   "folder": {
     "default_name": "Папка",

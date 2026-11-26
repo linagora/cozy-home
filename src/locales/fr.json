@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Modifier le raccourci",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "actions": "Actions du raccourci"
   },
   "folder": {
     "default_name": "Dossier",

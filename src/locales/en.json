@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Modify shortcut",
-    "delete": "Delete"
+    "delete": "Delete",
+    "actions": "Shortcut actions"
   },
   "folder": {
     "default_name": "Folder",

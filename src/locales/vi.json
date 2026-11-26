@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Chỉnh sửa lối tắt",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "actions": "Thao tác với lối tắt"
   },
   "folder": {
     "default_name": "Thư mục",

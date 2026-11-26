@@ -12,7 +12,6 @@ jest.mock('cozy-client', () => ({
     data: [],
     fetchStatus: 'loaded'
   }),
-  useFetchHomeShortcuts: (): never[] => [],
   useAppsInMaintenance: (): never[] => []
 }))
 jest.mock('react-redux', () => ({ useSelector: jest.fn() }))

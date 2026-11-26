@@ -534,7 +534,8 @@
   },
   "shortcut": {
     "edit": "Modificar el acceso directo",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "actions": "Acciones del acceso directo"
   },
   "folder": {
     "default_name": "Carpeta",

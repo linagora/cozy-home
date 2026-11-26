@@ -8,3 +8,12 @@
 
 .shortcut-actions-menu--visible
     opacity 1
+
+// Centre compact shortcut tiles in their grid cell like the other tiles: the
+// Badge root is an inline-flex span as wide as the tile, not as the cell.
+// Doubled class to win over the MuiBadge-root styles injected after this file.
+.shortcut-badge--compact.shortcut-badge--compact
+    display flex
+    width fit-content
+    margin-left auto
+    margin-right auto

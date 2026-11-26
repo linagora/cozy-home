@@ -1,12 +1,7 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
-import {
-  useAppsInMaintenance,
-  useFetchHomeShortcuts,
-  useQuery,
-  useSettings
-} from 'cozy-client'
+import { useAppsInMaintenance, useQuery, useSettings } from 'cozy-client'
 import type { IOCozyApp, IOCozyKonnector } from 'cozy-client/types/types'
 import flag from 'cozy-flags'
 
@@ -23,6 +18,7 @@ import type {
   UseHomeLayout
 } from './types'
 
+import { useHomeShortcuts } from '@/hooks/useHomeShortcuts'
 import {
   fetchRunningKonnectors,
   getRunningKonnectors
@@ -40,8 +36,9 @@ export const useHomeLayout = (): UseHomeLayout => {
   const { data: apps } = useQuery(appsConn.query, appsConn) as {
     data: IOCozyApp[] | null
   }
-  const shortcuts = useFetchHomeShortcuts() as
-    Parameters<typeof buildShortcutItems>[0] | null
+  const shortcuts = useHomeShortcuts() as Parameters<
+    typeof buildShortcutItems
+  >[0]
   const maintenance = useAppsInMaintenance() as unknown as IOCozyKonnector[]
   const installedKonnectors = useSelector(getInstalledKonnectors) as
     IOCozyKonnector[] | null

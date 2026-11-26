@@ -40,6 +40,9 @@ const ShortcutActionsMenu = ({
         <IconButton
           ref={anchorRef}
           size="small"
+          aria-label={t('shortcut.actions')}
+          aria-haspopup="menu"
+          aria-expanded={isMenuOpen}
           className={cx(
             styles['shortcut-actions-menu'],
             isMenuOpen && styles['shortcut-actions-menu--visible']

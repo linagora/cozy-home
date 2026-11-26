@@ -3,7 +3,7 @@ import memoize from 'lodash/memoize'
 import uniqBy from 'lodash/uniqBy'
 import React, { memo } from 'react'
 
-import { useQuery, useFetchHomeShortcuts, models } from 'cozy-client'
+import { useQuery, models } from 'cozy-client'
 import flag from 'cozy-flags'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 import { useI18n } from 'twake-i18n'
@@ -14,6 +14,7 @@ import LoadingPlaceholder from '@/components/LoadingPlaceholder'
 import LogoutTile from '@/components/LogoutTile'
 import ShortcutLink from '@/components/ShortcutLink'
 import homeConfig from '@/config/home.json'
+import { useHomeShortcuts } from '@/hooks/useHomeShortcuts'
 import { appsConn } from '@/queries'
 
 const {
@@ -84,7 +85,7 @@ export const getEntrypoints = apps => {
 export const useApps = () => {
   const { data: apps } = useQuery(appsConn.query, appsConn)
 
-  const shortcuts = useFetchHomeShortcuts()
+  const shortcuts = useHomeShortcuts()
 
   const entrypoints = getEntrypoints(apps)
 
@@ -110,8 +111,8 @@ export const Applications = () => {
         {appsComponents}
 
         {shortcuts &&
-          shortcuts.map((shortcut, index) => (
-            <ShortcutLink key={index} file={shortcut} />
+          shortcuts.map(shortcut => (
+            <ShortcutLink key={shortcut._id} file={shortcut} />
           ))}
 
         {showLogout && <LogoutTile />}
