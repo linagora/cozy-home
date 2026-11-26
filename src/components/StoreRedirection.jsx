@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { useClient } from 'cozy-client'
 import Intents from 'cozy-interapp'
+import log from 'cozy-logger'
 import Spinner from 'cozy-ui/transpiled/react/Spinner'
 
-const StoreRedirection = props => {
+const StoreRedirection = () => {
   const client = useClient()
-  const intents = new Intents({ client })
-  const category = props.match && props.match.params.category
-  const options = { type: 'konnector' }
-  if (category && category !== 'all') {
-    options.category = props.match.params.category
-  }
-  intents.redirect('io.cozy.apps', options)
+  const { category } = useParams()
+
+  useEffect(() => {
+    const intents = new Intents({ client })
+    const options = { type: 'konnector' }
+    if (category && category !== 'all') {
+      options.category = category
+    }
+    intents.redirect('io.cozy.apps', options).catch(error => {
+      log('error', `Could not redirect to the store: ${error}`)
+    })
+  }, [client, category])
 
   return <Spinner size="xxlarge" middle />
 }

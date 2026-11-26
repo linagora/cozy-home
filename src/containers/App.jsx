@@ -209,9 +209,11 @@ const App = () => {
                       />
                     </Route>
 
-                    <Route path="providers" element={<StoreRedirection />}>
-                      <Route path=":category" element={<StoreRedirection />} />
-                    </Route>
+                    <Route path="providers" element={<StoreRedirection />} />
+                    <Route
+                      path="providers/:category"
+                      element={<StoreRedirection />}
+                    />
                   </Route>
 
                   <Route path="/redirect" element={<IntentRedirect />} />
