@@ -29,7 +29,8 @@ jest.mock('cozy-ui/transpiled/react/utils/color', () => ({
 describe('Services component', () => {
   const setup = ({
     installedKonnectors,
-    appsAndKonnectorsInMaintenance = []
+    appsAndKonnectorsInMaintenance = [],
+    apps = [{ _id: 'io.cozy.apps/store', slug: 'store' }]
   } = {}) => {
     const client = createMockClient({
       clientOptions: {
@@ -40,6 +41,12 @@ describe('Services component', () => {
           lastUpdate: new Date(),
           data: installedKonnectors,
           doctype: 'io.cozy.konnectors',
+          hasMore: false
+        },
+        'io.cozy.apps': {
+          lastUpdate: new Date(),
+          data: apps,
+          doctype: 'io.cozy.apps',
           hasMore: false
         },
         'app-suggestions': {
@@ -85,5 +92,13 @@ describe('Services component', () => {
       appsAndKonnectorsInMaintenance
     })
     expect(root.queryByRole('heading', { name: 'Energy' })).toBeNull
+  })
+
+  it('hides the "Add" tile when the Store is not installed', () => {
+    const { root } = setup({
+      installedKonnectors: [],
+      apps: [{ _id: 'io.cozy.apps/drive', slug: 'drive' }]
+    })
+    expect(root.queryByText('Add')).toBeNull()
   })
 })

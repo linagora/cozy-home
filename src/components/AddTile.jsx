@@ -9,6 +9,7 @@ import { useI18n } from 'twake-i18n'
 import ShortcutCreateModal from './Shortcuts/ShortcutCreateModal'
 import TileButton from './TileButton'
 
+import { isStoreAvailable } from '@/hooks/useIsStoreAvailable'
 import styles from '@/styles/lists.styl'
 
 const ShortcutAddTile = () => {
@@ -68,12 +69,7 @@ const AddTile = ({ apps }) => {
     return <ShortcutAddTile />
   }
 
-  const hiddenApps = flag('apps.hidden') || []
-  const isStoreInstalled = apps.find(({ slug }) => slug === 'store')
-  const isStoreHidden = hiddenApps.includes('store')
-  const shouldDisplayStoreAddTitle = isStoreInstalled && !isStoreHidden
-
-  if (shouldDisplayStoreAddTitle) {
+  if (isStoreAvailable(apps)) {
     return <StoreAddTile />
   }
 

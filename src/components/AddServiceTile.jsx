@@ -4,16 +4,22 @@ import { useClient, generateWebLink } from 'cozy-client'
 import AppLinker from 'cozy-ui-plus/dist/AppLinker'
 import SquareAppIcon from 'cozy-ui-plus/dist/SquareAppIcon'
 
+import { useIsStoreAvailable } from '@/hooks/useIsStoreAvailable'
+
 /**
- * AddServiceTile component.
+ * AddServiceTile component: a link to the konnectors of the Store, rendered
+ * only when the Store is installed and not hidden.
  *
  * @param {Object} props - The component props.
  * @param {string} props.label - The label for the service tile.
  * @param {string} [props.category] - The category of the service tile.
- * @returns {JSX.Element} The rendered AddServiceTile component.
+ * @returns {JSX.Element|null} The rendered AddServiceTile component.
  */
 const AddServiceTile = ({ label, category }) => {
   const client = useClient()
+  const isStoreAvailable = useIsStoreAvailable()
+  if (!isStoreAvailable) return null
+
   const nativePath = `/discover/?type=konnector${
     category ? `&category=${category}` : ''
   }`
