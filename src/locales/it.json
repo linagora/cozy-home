@@ -618,5 +618,14 @@
     "remove_custom": "Rimuovi lo sfondo importato",
     "invalid_image": "Questo file non può essere usato come sfondo. Scegli un’immagine JPEG, PNG, WebP o GIF.",
     "import_error": "Impossibile importare lo sfondo. Riprova."
+  },
+  "dnd": {
+    "instructions": "Per prendere un riquadro, premi Spazio o Invio. Durante il trascinamento, usa le frecce per spostarlo. Premi di nuovo Spazio o Invio per rilasciarlo nella nuova posizione, oppure Esc per annullare.",
+    "picked_up": "%{item} preso.",
+    "moved_over": "%{item} è stato spostato sopra %{target}.",
+    "moved_out": "%{item} non è più sopra un’area di rilascio.",
+    "dropped_over": "%{item} è stato rilasciato su %{target}.",
+    "dropped": "%{item} è stato rilasciato.",
+    "cancelled": "Spostamento annullato. %{item} è tornato al suo posto."
   }
 }

@@ -618,5 +618,14 @@
     "remove_custom": "Supprimer le fond d’écran importé",
     "invalid_image": "Ce fichier ne peut pas être utilisé comme fond d’écran. Choisissez une image JPEG, PNG, WebP ou GIF.",
     "import_error": "Le fond d’écran n’a pas pu être importé. Veuillez réessayer."
+  },
+  "dnd": {
+    "instructions": "Pour saisir une tuile, appuyez sur Espace ou Entrée. Pendant le déplacement, utilisez les flèches pour la déplacer. Appuyez de nouveau sur Espace ou Entrée pour la déposer à sa nouvelle position, ou sur Échap pour annuler.",
+    "picked_up": "%{item} saisi.",
+    "moved_over": "%{item} a été déplacé au-dessus de %{target}.",
+    "moved_out": "%{item} n’est plus au-dessus d’une zone de dépôt.",
+    "dropped_over": "%{item} a été déposé sur %{target}.",
+    "dropped": "%{item} a été déposé.",
+    "cancelled": "Déplacement annulé. %{item} est revenu à sa place."
   }
 }

@@ -244,8 +244,27 @@ div[class*='SquareAppIcon-icon-container'] .section-app-group
     cursor grab
     touch-action manipulation
 
-// Shown only when the tile is hovered; the paper background keeps it readable
-// over an icon and overrides the MUI IconButton hover tint.
+// Shown only when the tile is hovered or focused, and always on touch screens
+// (no hover there); the paper background keeps it readable over an icon and
+// overrides the MUI IconButton hover tint.
 .home-folder-item:hover .home-folder-remove
+.home-folder-item:focus-within .home-folder-remove
     opacity 1
     background var(--paperBackgroundColor)
+
+@media (hover: none)
+    .home-folder-item .home-folder-remove
+        opacity 1
+        background var(--paperBackgroundColor)
+
+// Initial of a shortcut without icon in a folder preview
+.home-folder-preview-initial
+    display flex
+    align-items center
+    justify-content center
+    width 100%
+    height 100%
+    font-size rem(10)
+    font-weight bold
+    color var(--primaryContrastTextColor)
+    background-color var(--primaryColor)

@@ -77,4 +77,21 @@ describe('FolderDialog', () => {
     fireEvent.click(screen.getByTestId('folder-remove-app:drive'))
     expect(onRemoveItem).toHaveBeenCalledWith('folder:x', 'app:drive')
   })
+
+  it.each(['', '   '])('keeps the previous name when renamed to %j', value => {
+    const { onRename } = setup()
+    const input = screen.getByDisplayValue('Banques')
+    fireEvent.change(input, { target: { value } })
+    fireEvent.blur(input)
+    expect(onRename).not.toHaveBeenCalled()
+    expect(screen.getByDisplayValue('Banques')).toBeInTheDocument()
+  })
+
+  it('trims the new name', () => {
+    const { onRename } = setup()
+    const input = screen.getByDisplayValue('Banques')
+    fireEvent.change(input, { target: { value: '  Comptes ' } })
+    fireEvent.blur(input)
+    expect(onRename).toHaveBeenCalledWith('folder:x', 'Comptes')
+  })
 })

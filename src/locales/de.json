@@ -618,5 +618,14 @@
     "remove_custom": "Importiertes Hintergrundbild entfernen",
     "invalid_image": "Diese Datei kann nicht als Hintergrundbild verwendet werden. Wählen Sie ein JPEG-, PNG-, WebP- oder GIF-Bild.",
     "import_error": "Das Hintergrundbild konnte nicht importiert werden. Bitte versuchen Sie es erneut."
+  },
+  "dnd": {
+    "instructions": "Um eine Kachel aufzunehmen, drücken Sie die Leertaste oder die Eingabetaste. Verschieben Sie sie dann mit den Pfeiltasten. Drücken Sie erneut die Leertaste oder die Eingabetaste, um sie an der neuen Position abzulegen, oder Escape, um abzubrechen.",
+    "picked_up": "%{item} aufgenommen.",
+    "moved_over": "%{item} wurde über %{target} bewegt.",
+    "moved_out": "%{item} befindet sich nicht mehr über einem Ablagebereich.",
+    "dropped_over": "%{item} wurde auf %{target} abgelegt.",
+    "dropped": "%{item} wurde abgelegt.",
+    "cancelled": "Verschieben abgebrochen. %{item} ist wieder an seinem Platz."
   }
 }

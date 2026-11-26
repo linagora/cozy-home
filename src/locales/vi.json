@@ -618,5 +618,14 @@
     "remove_custom": "Xóa hình nền đã nhập",
     "invalid_image": "Không thể dùng tệp này làm hình nền. Hãy chọn ảnh JPEG, PNG, WebP hoặc GIF.",
     "import_error": "Không thể nhập hình nền. Vui lòng thử lại."
+  },
+  "dnd": {
+    "instructions": "Để nhấc một ô, nhấn phím Cách hoặc Enter. Trong khi kéo, dùng các phím mũi tên để di chuyển ô. Nhấn lại phím Cách hoặc Enter để thả ô vào vị trí mới, hoặc nhấn Escape để hủy.",
+    "picked_up": "Đã nhấc %{item}.",
+    "moved_over": "%{item} đã được di chuyển lên trên %{target}.",
+    "moved_out": "%{item} không còn ở trên vùng thả.",
+    "dropped_over": "%{item} đã được thả lên %{target}.",
+    "dropped": "Đã thả %{item}.",
+    "cancelled": "Đã hủy di chuyển. %{item} đã trở về vị trí cũ."
   }
 }

@@ -618,5 +618,14 @@
     "remove_custom": "Remove the imported wallpaper",
     "invalid_image": "This file cannot be used as a wallpaper. Choose a JPEG, PNG, WebP or GIF image.",
     "import_error": "The wallpaper could not be imported. Please try again."
+  },
+  "dnd": {
+    "instructions": "To pick up a tile, press Space or Enter. While dragging, use the arrow keys to move it. Press Space or Enter again to drop it in its new position, or press Escape to cancel.",
+    "picked_up": "Picked up %{item}.",
+    "moved_over": "%{item} was moved over %{target}.",
+    "moved_out": "%{item} is no longer over a drop area.",
+    "dropped_over": "%{item} was dropped over %{target}.",
+    "dropped": "%{item} was dropped.",
+    "cancelled": "Moving was cancelled. %{item} went back to its place."
   }
 }

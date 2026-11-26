@@ -86,9 +86,16 @@ export const FolderDialog = ({
   const committedNameRef = useRef(folder.name)
 
   const commitRename = (): void => {
-    if (name !== committedNameRef.current) {
-      committedNameRef.current = name
-      onRename(folder.id, name)
+    const trimmed = name.trim()
+    // A blank name would leave an unlabelled tile: keep the previous one
+    if (!trimmed) {
+      setName(committedNameRef.current)
+      return
+    }
+    if (trimmed !== name) setName(trimmed)
+    if (trimmed !== committedNameRef.current) {
+      committedNameRef.current = trimmed
+      onRename(folder.id, trimmed)
     }
   }
 

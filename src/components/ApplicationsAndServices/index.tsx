@@ -4,11 +4,13 @@ import React, { useMemo } from 'react'
 
 import flag from 'cozy-flags'
 import useBreakpoints from 'cozy-ui/transpiled/react/providers/Breakpoints'
+import { useI18n } from 'twake-i18n'
 
 import { FolderDialog } from './FolderDialog'
 import LegacyApplicationsAndServices from './LegacyApplicationsAndServices'
 import { SortableTile } from './SortableTile'
 import { TileContent } from './TileContent'
+import { makeDndAccessibility } from './dndAccessibility'
 import { noSortStrategy } from './dndGeometry'
 import { dissolveFolder, removeFromFolder, renameFolder } from './homeLayout'
 import { LoadingAppTiles } from './types'
@@ -23,6 +25,7 @@ import LogoutTile from '@/components/LogoutTile'
 export const ApplicationsAndServices = (): JSX.Element => {
   const showLogout = Boolean(flag('home.mainlist.show-logout'))
   const { isMobile } = useBreakpoints()
+  const { t, lang } = useI18n()
   const { hasLoaded, isAppsLoading, items, layout, apps, saveLayout } =
     useHomeLayout()
   const appsForAlerts = useMemo(
@@ -50,9 +53,17 @@ export const ApplicationsAndServices = (): JSX.Element => {
     handleDragEnd
   } = useHomeDnd({ items, layout, saveLayout })
 
+  // Translated keyboard instructions and announcements, naming tiles by their
+  // label instead of dnd-kit's English texts with internal ids
+  const accessibility = useMemo(
+    () => makeDndAccessibility(grid, t, lang),
+    [grid, t, lang]
+  )
+
   return (
     <div className="app-list-wrapper u-m-auto u-w-100">
       <DndContext
+        accessibility={accessibility}
         sensors={sensors}
         collisionDetection={collisionDetection}
         measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}

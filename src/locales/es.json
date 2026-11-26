@@ -618,5 +618,14 @@
     "remove_custom": "Eliminar el fondo de pantalla importado",
     "invalid_image": "Este archivo no se puede usar como fondo de pantalla. Elija una imagen JPEG, PNG, WebP o GIF.",
     "import_error": "No se pudo importar el fondo de pantalla. Inténtelo de nuevo."
+  },
+  "dnd": {
+    "instructions": "Para tomar un mosaico, pulse Espacio o Intro. Mientras lo arrastra, use las flechas para moverlo. Pulse de nuevo Espacio o Intro para soltarlo en su nueva posición, o Escape para cancelar.",
+    "picked_up": "%{item} tomado.",
+    "moved_over": "%{item} se ha movido sobre %{target}.",
+    "moved_out": "%{item} ya no está sobre una zona de destino.",
+    "dropped_over": "%{item} se ha soltado sobre %{target}.",
+    "dropped": "%{item} se ha soltado.",
+    "cancelled": "Movimiento cancelado. %{item} ha vuelto a su lugar."
   }
 }
