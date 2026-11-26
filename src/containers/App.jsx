@@ -33,6 +33,7 @@ import SectionDialog from '@/components/Sections/SectionDialog'
 import { formatShortcuts } from '@/components/Shortcuts/utils'
 import StoreRedirection from '@/components/StoreRedirection'
 import { useFetchInitialData } from '@/hooks/useFetchInitialData'
+import { useForwardEscapeToTopModal } from '@/hooks/useForwardEscapeToTopModal'
 import { SentryRoutes } from '@/lib/sentry'
 import {
   mkHomeMagicFolderConn,
@@ -56,6 +57,7 @@ window.minilog = minilog
 const App = () => {
   const { pathname } = useLocation()
   const { isMobile } = useBreakpoints()
+  useForwardEscapeToTopModal()
   const [contentWrapper, setContentWrapper] = useState(undefined)
 
   const [didInit, setDidInit] = useState(false)
